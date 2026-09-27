@@ -40,7 +40,57 @@
         a la más antigua.
       </p>
 
+      <!-- Sin esto, desde la bitácora solo se podía volver a un perfil pasando por Inicio -->
+      <nav class="bitacora-nav" aria-label="Perfiles del equipo">
+        <p class="eyebrow">Ir a un perfil</p>
+        <ul>
+          <li><a href="nicolas-zalazar.html" class="hero-button hero-button--light">Nicolás Zalazar</a></li>
+          <li><a href="laura-blanco.html" class="hero-button hero-button--light">Laura Blanco</a></li>
+          <li><a href="christian-albornoz.html" class="hero-button hero-button--light">Christian Albornoz</a></li>
+          <li><a href="laura-olivera.html" class="hero-button hero-button--light">Laura Olivera</a></li>
+          <li><a href="fernando-guevara.html" class="hero-button hero-button--light">Fernando Guevara</a></li>
+        </ul>
+      </nav>
+
       <!-- Las entradas conservan su fecha; las decisiones de diseño se registran por separado. -->
+
+      <article class="bitacora-entry">
+        <time datetime="2026-09-27">27 de septiembre de 2026</time>
+        <h2>Sprint 4 — Correcciones de lo reportado en la revisión cruzada</h2>
+
+        <p>
+          La auditoría de Christian sobre el perfil de Laura Blanco (entrada del 26/09) dejó dos problemas
+          reportados pero sin corregir. Los resolvimos acá.
+        </p>
+
+        <h3>«Volver a intentar» activo antes de jugar</h3>
+        <ul>
+          <li>
+            En «Encontrá el bug», el botón de reinicio se podía pulsar desde el inicio, cuando todavía no había
+            nada que reiniciar. Antes del 25/09 estaba oculto hasta terminar el juego; al hacerlo visible para
+            poder reiniciar a mitad de partida, quedó habilitado también antes de empezar.
+          </li>
+          <li>
+            Ahora el botón arranca oculto y aparece cuando el visitante revisa el primer dato, es decir, cuando
+            empieza a jugar. Al reiniciar se vuelve a ocultar. Así sigue sirviendo para reiniciar a mitad de
+            partida, y funciona igual que la trivia de Christian y el test de Laura Olivera, donde el reinicio
+            aparece recién cuando hay algo que reiniciar.
+          </li>
+        </ul>
+
+        <h3>La bitácora no tenía salida hacia los perfiles</h3>
+        <ul>
+          <li>
+            Desde un perfil se llega a la bitácora con «Ver bitácora», pero desde la bitácora solo había
+            enlaces a Inicio. Para volver al perfil había que pasar por la portada o usar el botón Atrás, que es
+            justo lo que la consigna pide evitar.
+          </li>
+          <li>
+            Agregamos debajo de la introducción una fila «Ir a un perfil» con enlaces a los cinco integrantes.
+            Reutiliza <code>.hero-button--light</code>, el mismo estilo de la navegación de los perfiles.
+          </li>
+        </ul>
+      </article>
 
       <article class="bitacora-entry">
         <time datetime="2026-09-26">26 de septiembre de 2026</time>
