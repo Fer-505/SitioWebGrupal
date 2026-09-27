@@ -360,6 +360,7 @@ Registra, por sprint, las decisiones tomadas, los problemas encontrados y cómo 
 | Claude Code | Claude Opus 5 y Claude Opus 5.5 | Pago | Uso frecuente antes de este TP |
 | Gemini | Gemini 2.5 Flash / Web | Gratuito | Uso frecuente antes de este TP |
 | GitHub Copilot Chat | Modelo asignado a esta sesión; identificador no registrado | Free | Usado en la revisión del Sprint 4; experiencia previa específica no registrada |
+| Claude (chat en claude.ai) | Claude Opus 5.5 | [Pago] | Uso frecuente en el trabajo como QA y en la facultad |
 
 ### En qué asistió
 
@@ -367,6 +368,7 @@ Registra, por sprint, las decisiones tomadas, los problemas encontrados y cómo 
 - **Código y diseño:** Claude Code asistió en parte del carrusel de `js/portada.js` y en interacciones JavaScript de los perfiles.
 - **Imágenes:** Gemini generó los cinco avatares a partir de imágenes adjuntas. Prompt informado por el equipo: «contruye un avatar en base a la imagen adjuntada».
 - **Debugging y QA:** GitHub Copilot asistió la auditoría del navegador del 25/09: interacciones y errores de consola en las siete páginas, sin errores JS. En la revisión cruzada del 26/09, Claude Code se usó para auditar el Sprint 4 contra el plan, buscar la causa de los bugs encontrados y verificar las correcciones en el navegador en 400, 412, 900 y 1200px. Los casos concretos están en la sección siguiente.
+- **Perfil y QA de Laura Blanco:** Laura usó Claude (chat en claude.ai) para armar la estructura de su perfil a partir de los perfiles ya hechos, programar «Encontrá el bug», recortar y optimizar su avatar para web, guiar el flujo de Git (ramas, commits y Pull Requests) y apoyar la revisión cruzada del perfil de Fernando. Laura eligió los datos, la idea del juego y qué hallazgos corregir y cuáles reportar, y probó cada cambio en el navegador antes de subirlo.
 
 ### Imágenes y avatares generados con IA
 
