@@ -362,7 +362,7 @@ Registra, por sprint, las decisiones tomadas, los problemas encontrados y cómo 
 |---|---|---|---|
 | Claude Code | Claude Opus 5 y Claude Opus 5.5 | Pago | Uso frecuente antes de este TP |
 | Gemini | Gemini 2.5 Flash / Web | Gratuito | Uso frecuente antes de este TP |
-| GitHub Copilot Chat | Modelo asignado a esta sesión; identificador no registrado | Free | Usado en la revisión del Sprint 4; experiencia previa específica no registrada |
+| GitHub Copilot Chat | Modelo por defecto del plan Free (no se anotó cuál) | Free | Laura Olivera lo usó en la auditoría del navegador del Sprint 4 |
 | Claude (chat en claude.ai) | Claude Opus 5.5 | Pago | Uso frecuente en el trabajo como QA y en la facultad |
 
 ### En qué asistió
