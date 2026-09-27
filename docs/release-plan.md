@@ -126,7 +126,7 @@ Repetir por cada uno de los 5 integrantes (una tarea/issue por perfil):
   - [x] Si se generaron avatares/imágenes con IA: modelo usado y criterio de los prompts
   - [x] Qué se revisó, adaptó o cambió con criterio propio antes de incorporar resultados generados — esta es la parte que separa "Propone" de "Supera" en este ítem, no la saltees
 - [x] Completar README: capturas de pantalla de cada función JS, estructura de archivos final, guía de estilos con hex reales
-- [ ] Sección "evolución" en el README: qué se planea ampliar en próximos TPs
+- [x] Sección "evolución" en el README: qué se planea ampliar en próximos TPs
 
 **Acceptance criteria:** README completo sin placeholders, bitácora con mínimo una entrada real por sprint, sección de IA con ejemplos concretos (no genérica tipo "usamos ChatGPT para ayudar con el código").
 

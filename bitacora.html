@@ -59,6 +59,45 @@
 
       <article class="bitacora-entry">
         <time datetime="2026-09-27">27 de septiembre de 2026</time>
+        <h2>Sprint 4 — El atributo <code>hidden</code> no ocultaba</h2>
+
+        <h3>Problema</h3>
+        <ul>
+          <li>
+            Revisando las capturas nuevas del README vimos que, al terminar el comparador de gustos de Nicolás,
+            el mazo y los botones «Me gusta» y «No es lo mío» seguían a la vista junto al resultado. El
+            JavaScript sí los ocultaba con <code>hidden</code>, pero <code>.taste-card-area</code> tiene
+            <code>display: flex</code>, y cualquier <code>display</code> de una clase le gana al atributo.
+          </li>
+          <li>
+            Era la cuarta vez que aparecía el mismo problema. Lo habíamos resuelto caso por caso con
+            <code>.member-card[hidden]</code>, <code>.empty-state[hidden]</code>, <code>.bug-hunt [hidden]</code>
+            y <code>.hero-button[hidden]</code>, y cada clase nueva con <code>display</code> lo volvía a traer.
+          </li>
+        </ul>
+
+        <h3>Decisión</h3>
+        <ul>
+          <li>
+            Reemplazamos todas esas reglas por una sola en el reset de <code>css/base.css</code>:
+            <code>[hidden] { display: none !important; }</code>. En el Sprint 3 eliminamos los
+            <code>!important</code>, pero este es deliberado: <code>hidden</code> tiene que ganar siempre, y es
+            la solución habitual para este problema.
+          </li>
+          <li>
+            Probamos en el navegador todo lo que usa <code>hidden</code>: el buscador y el estado vacío de la
+            portada, el carrusel, el mazo y el resultado del comparador, los tres reinicios que arrancan
+            ocultos y el test de Laura Olivera. Todo se oculta y se muestra cuando corresponde, sin errores de
+            consola.
+          </li>
+          <li>
+            La captura del comparador en el README muestra el problema, así que hay que volver a sacarla.
+          </li>
+        </ul>
+      </article>
+
+      <article class="bitacora-entry">
+        <time datetime="2026-09-27">27 de septiembre de 2026</time>
         <h2>Sprint 4 — Favicon del sitio</h2>
 
         <h3>Problema</h3>
@@ -104,56 +143,100 @@
 
       <article class="bitacora-entry">
         <time datetime="2026-09-27">27 de septiembre de 2026</time>
-        <h2>Sprint 4 — Revisión cruzada de Laura Blanco sobre el perfil de Fernando</h2>
+        <h2>Sprint 4 — Correcciones del reporte de Laura Blanco</h2>
 
-        <h3>Cómo lo revisé</h3>
+        <p>
+          De los cuatro puntos que Laura Blanco reportó sin corregir en el perfil de Fernando (ver «Revisión
+          cruzada de Laura Blanco sobre el perfil de Fernando»), resolvimos los dos que afectaban el diseño. Los otros dos quedan para Fernando.
+        </p>
+
+        <h3>El giro de la foto deformaba el encabezado</h3>
         <ul>
           <li>
-            Entré desde la portada y recorrí <code>fernando-guevara.html</code> sin usar el botón Atrás, con la
-            consola abierta (0 errores de JS). Lo probé en 400, 900 y 1200px: sin desborde horizontal y con
-            todos los enlaces funcionando.
+            Al medirlo resultó más grave que lo reportado: entre 412 y 600px, la tarjeta del encabezado pasaba de
+            578 a 1207px de alto. El reverso (<code>.profile-photo-flip-message</code>) no tenía tamaño fijo, así
+            que medía lo que el texto en una sola línea (351px), ensanchaba la columna del avatar y aplastaba la
+            del nombre.
           </li>
           <li>
-            Probé las tres interacciones con mouse y con teclado: los discos que se expanden, el «Rincón Musical»
-            y el giro de la foto. Las tres funcionan.
+            Ahora el reverso es un círculo del mismo tamaño que la foto, con el texto en <code>--fs-xs</code>. El
+            alto de la tarjeta ya no cambia al girar en ningún ancho, y la pista «Tocá la foto para darla vuelta»
+            sigue debajo.
           </li>
         </ul>
 
-        <h3>Lo que corregí</h3>
+        <h3>El nombre quedaba corrido a la izquierda en mobile</h3>
+        <ul>
+          <li>
+            El <code>h1</code> global tiene <code>max-width: 10ch</code>: en 400px el texto estaba centrado, pero
+            su caja quedaba pegada a la izquierda, 14px fuera del centro.
+          </li>
+          <li>
+            Agregamos <code>margin-inline: auto</code> al <code>h1</code> del encabezado de perfil, solo en el
+            breakpoint de 400px, donde el encabezado se apila. Como es CSS compartido, el arreglo alcanzó a los
+            cinco perfiles.
+          </li>
+        </ul>
+
+        <h3>Pendiente para Fernando</h3>
+        <ul>
+          <li>Los signos de apertura y la tilde del mensaje de la foto, porque es su texto.</li>
+          <li>Un indicador visual y <code>role="button"</code> en los discos desplegables.</li>
+        </ul>
+      </article>
+
+      <article class="bitacora-entry">
+        <time datetime="2026-09-27">27 de septiembre de 2026</time>
+        <h2>Sprint 4 — Revisión cruzada de Laura Blanco sobre el perfil de Fernando</h2>
+
+        <h3>Cómo lo revisó</h3>
+        <ul>
+          <li>
+            Laura Blanco entró desde la portada y recorrió <code>fernando-guevara.html</code> sin usar el botón Atrás, con
+            la consola abierta (0 errores de JS). Lo probó en 400, 900 y 1200px: no había desborde horizontal y
+            todos los enlaces funcionaban.
+          </li>
+          <li>
+            Probó las tres interacciones con mouse y con teclado: los discos que se expanden, el «Rincón Musical»
+            y el giro de la foto. Las tres funcionaban.
+          </li>
+        </ul>
+
+        <h3>Lo que corrigió</h3>
         <ul>
           <li>
             <strong>Títulos distintos al resto de los perfiles.</strong> Fernando usaba «Habilidades»,
-            «Películas favoritas» y «Discos favoritos», mientras que los otros cuatro perfiles usan
-            «Habilidades Clave», «Películas Favoritas» y «Discos Favoritos». Los unifiqué para que la maquetación
-            sea uniforme.
+            «Películas favoritas» y «Discos favoritos», mientras que los otros cuatro perfiles usaban
+            «Habilidades Clave», «Películas Favoritas» y «Discos Favoritos». Los unificó para que la maquetación
+            fuera uniforme.
           </li>
           <li>
-            <strong>El giro de la foto no se descubría.</strong> La única pista era un tooltip que aparece al
-            pasar el mouse, así que en celular nadie podía enterarse de que la foto se da vuelta. Agregué debajo
+            <strong>El giro de la foto no se descubría.</strong> La única pista era un tooltip que aparecía al
+            pasar el mouse, así que en celular nadie podía enterarse de que la foto se daba vuelta. Agregó debajo
             del avatar el texto «Tocá la foto para darla vuelta», con la clase
-            <code>.profile-avatar-container--hint</code> para que quede debajo de la foto sin cambiar los demás
+            <code>.profile-avatar-container--hint</code>, para ubicarlo debajo de la foto sin cambiar los demás
             perfiles.
           </li>
         </ul>
 
-        <h3>Lo que reporté sin corregir</h3>
+        <h3>Lo que reportó sin corregir</h3>
         <ul>
           <li>
-            El mensaje de la foto dice «Pase nomás! Sientese…»: faltan los signos de apertura y la tilde de
-            «Siéntese». Lo dejé para que Fernando decida el texto.
+            El mensaje de la foto decía «Pase nomás! Sientese…»: faltaban los signos de apertura y la tilde de
+            «Siéntese». Lo dejó para que Fernando decida el texto.
           </li>
           <li>
-            Al girar la foto, el avatar circular se convierte en un rectángulo y en celular empuja el contenido
-            hacia abajo.
+            Al girar la foto, el avatar circular se convertía en un rectángulo y en celular empujaba el contenido
+            hacia abajo. (Lo corregimos ese mismo día: ver «Correcciones del reporte de Laura Blanco».)
           </li>
           <li>
-            Los discos que se expanden no muestran ningún ícono que indique que se pueden abrir, y les falta
-            <code>role="button"</code> para que un lector de pantalla los anuncie como desplegables.
+            Los discos que se expanden no mostraban ningún ícono que indicara que se podían abrir, y les faltaba
+            <code>role="button"</code> para que un lector de pantalla los anunciara como desplegables.
           </li>
           <li>
-            General para todos los perfiles: en 400px el nombre queda corrido a la izquierda, porque el
-            <code>h1</code> tiene <code>max-width: 10ch</code> sin margen automático. Como es CSS compartido,
-            lo comenté en el grupo antes de tocarlo.
+            En 400px el nombre quedaba corrido a la izquierda en todos los perfiles, porque el <code>h1</code>
+            tiene <code>max-width: 10ch</code> sin margen automático. Como es CSS compartido, lo comentó en el
+            grupo antes de tocarlo. (Lo corregimos ese mismo día: ver «Correcciones del reporte de Laura Blanco».)
           </li>
         </ul>
       </article>
@@ -164,8 +247,9 @@
 
         <p>
           La auditoría de Christian sobre el perfil de Laura Blanco (entrada del 26/09) dejó dos problemas
-          reportados pero sin corregir. Los resolvimos acá, junto con un problema de estilos de los botones
-          que encontramos revisando el perfil de Nicolás y la presentación del resultado del test de Laura Olivera.
+          reportados pero sin corregir. Los resolvimos en esta entrada, junto con un problema de estilos de los
+          botones que encontramos revisando el perfil de Nicolás y la presentación del resultado del test de Laura
+          Olivera.
         </p>
 
         <h3>«Volver a intentar» activo antes de jugar</h3>
@@ -244,29 +328,6 @@
             separado.
           </li>
         </ul>
-
-        <h3>Lo que Laura Blanco reportó en el perfil de Fernando</h3>
-        <ul>
-          <li>
-            <strong>El giro de la foto deformaba el encabezado.</strong> Al medirlo resultó más grave que lo
-            reportado: entre 412 y 600px, la tarjeta del encabezado pasaba de 578 a 1207px de alto. El reverso
-            (<code>.profile-photo-flip-message</code>) no tenía tamaño fijo, así que medía lo que el texto en una
-            sola línea (351px), ensanchaba la columna del avatar y aplastaba la del nombre. Ahora el reverso es
-            un círculo del mismo tamaño que la foto, con el texto en <code>--fs-xs</code>. El alto de la tarjeta
-            ya no cambia al girar en ningún ancho.
-          </li>
-          <li>
-            <strong>El nombre quedaba corrido a la izquierda en mobile.</strong> El <code>h1</code> global tiene
-            <code>max-width: 10ch</code>: en 400px el texto estaba centrado, pero su caja quedaba pegada a la
-            izquierda, 14px fuera del centro. Agregamos <code>margin-inline: auto</code> al <code>h1</code> del
-            encabezado de perfil, solo en el breakpoint de 400px, donde el encabezado se apila. Corrige los cinco
-            perfiles.
-          </li>
-          <li>
-            Quedan para Fernando los otros dos puntos del reporte: los signos y la tilde del mensaje de la foto
-            (es su texto) y el indicador y <code>role="button"</code> de los discos desplegables.
-          </li>
-        </ul>
       </article>
 
       <article class="bitacora-entry">
@@ -276,8 +337,9 @@
         <h3>Cómo hicimos la revisión cruzada</h3>
         <ul>
           <li>
-            Después de la auditoría automatizada del 25/09, cada integrante que revisó el sitio corrigió lo que
-            encontró en su propia rama y lo integró por Pull Request:
+            Después de la auditoría automatizada del 25/09, cada integrante revisó el trabajo de otra persona.
+            Algunos corrigieron lo que encontraron en su propia rama y lo integraron por Pull Request; otros lo
+            reportaron para que se corrigiera después:
             <ul>
               <li>
                 <strong>Laura Olivera</strong> (PR #25) recorrió las interacciones y corrigió los botones del
@@ -289,7 +351,10 @@
                 la cita.
               </li>
               <li>
-                <strong>Christian Albornoz — Auditoría sobre Laura Blanco:</strong> navegó <code>laura-blanco.html</code> sin usar el botón Atrás y con consola abierta (0 errores de JS). Reportó que en «Encontrá el bug», el botón «Volver a intentar» se encuentra habilitado para hacer clic desde el inicio antes de interactuar con las opciones, y señaló la fricción de navegación al acceder a la bitácora sin un enlace directo de retorno.
+                <strong>Christian Albornoz</strong> también revisó el perfil de Laura Blanco: lo recorrió sin usar
+                el botón Atrás y con la consola abierta (0 errores de JS). Reportó que en «Encontrá el bug» el botón
+                «Volver a intentar» estaba habilitado desde el inicio, antes de revisar ningún dato, y que desde la
+                bitácora no había un enlace directo para volver a los perfiles. (Los dos se corrigieron el 27/09.)
               </li>
               <li>
                 <strong>Nicolás Zalazar</strong> auditó el Sprint 4 contra el plan, detectó los botones invisibles
@@ -297,17 +362,22 @@
                 Christian.
               </li>
               <li>
-                <strong>Fernando Guevara</strong> revisó el perfil de Nicolás y aprobó su funcionalidad, consola, diseño responsivo y navegación.
-                El perfil fue probado en las funcionalidades principales y en distintos tamaños de pantalla. No se encontraron errores durante las pruebas realizadas, por lo que se considera que cumple con los requisitos revisados y queda aprobado.
+                <strong>Fernando Guevara</strong> revisó el perfil de Nicolás (PR #29): probó sus funciones principales
+                en distintos anchos de pantalla, junto con la consola y la navegación, y no encontró errores.
               </li>
               <li>
-              <strong>Fernando Guevara — Auditoría sobre Laura Olivera:</strong> recorrió <code>laura-olivera.html</code>
-              en 400, 900 y 1200px, probó el test «¿Cómo resolvés bajo presión?» completo (las tres situaciones y el
-              reinicio) y confirmó 0 errores de JS. Encontró que la barra de progreso se adelantaba un paso: mostraba
-              el porcentaje de la pregunta siguiente en vez de la ya respondida (no afectaba el puntaje final). Se
-              corrigió en <code>js/perfil-laura-olivera.js</code> sacando el <code>+ 1</code> del cálculo del ancho.
-            </li>
-          </ul>
+                <strong>Fernando Guevara</strong> también revisó el perfil de Laura Olivera (PR #31): lo recorrió en
+                400, 900 y 1200px, completó el test «¿Cómo resolvés bajo presión?» (las tres situaciones y el
+                reinicio) y confirmó 0 errores de JS. Encontró que la barra de progreso se adelantaba un paso:
+                mostraba el porcentaje de la pregunta siguiente en vez de la ya respondida, aunque no afectaba el
+                puntaje final. Lo corrigió en <code>js/perfil-laura-olivera.js</code> sacando el <code>+ 1</code>
+                del cálculo del ancho.
+              </li>
+              <li>
+                <strong>Laura Blanco</strong> revisó el perfil de Fernando al día siguiente: está en su propia entrada
+                del 27/09.
+              </li>
+            </ul>
           </li>
           <li>
             Cada revisión se hizo sobre el trabajo de otra persona. Así, lo que pasó por alto quien escribió el
@@ -347,8 +417,9 @@
           </li>
           <li>
             Restauramos todo eso sin tocar la lógica nueva del reinicio. El botón ahora se oculta con el
-            atributo <code>hidden</code> en lugar de <code>style.display</code>, y su margen vive en la clase
-            <code>.trivia-reset</code> de <code>css/perfil.css</code>.
+            atributo <code>hidden</code> en lugar de <code>style.display</code>, y su margen pasó a la clase
+            <code>.trivia-reset</code> de <code>css/perfil.css</code>. (El 27/09 esa clase se eliminó
+            al unificar los cuatro «Volver a intentar».)
           </li>
           <li>
             Aprendizaje: antes de empezar una tarea hay que actualizar la rama con <code>git pull</code>, y en
@@ -375,10 +446,6 @@
             (navegación entre perfiles, «Volver al inicio», «Ver bitácora», los botones de las interacciones
             y los de la portada).
           </li>
-        </ul>
-
-        <h3>Cómo resolvimos los botones invisibles</h3>
-        <ul>
           <li>
             El hover y el foco de teclado ahora usan <code>--color-feature-soft</code> (<code>#9eece7</code>),
             un turquesa claro que ya estaba en la paleta, y fijan el texto en <code>--color-primary</code>
@@ -391,7 +458,7 @@
           </li>
         </ul>
       </article>
-      
+
       <article class="bitacora-entry">
         <time datetime="2026-09-25">25 de septiembre de 2026</time>
         <h2>Sprint 4 — Auditoría local de navegación y JavaScript</h2>
@@ -433,7 +500,8 @@
           <li>
             <strong>En «Encontrá el bug» de Laura Blanco no se podía reiniciar a mitad del juego.</strong>
             El botón de reinicio arrancaba oculto y solo aparecía al encontrar los cuatro bugs. Lo dejamos
-            siempre visible.
+            siempre visible. (El 27/09 lo cambiamos: ahora aparece recién cuando se
+            empieza a jugar.)
           </li>
           <li>
             <strong>La paginación de Laura Olivera era distinta a la del resto.</strong> Decía solo «Perfil

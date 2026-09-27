@@ -120,6 +120,13 @@
   box-sizing: border-box;
 }
 
+/* Cualquier display de una clase le gana al atributo hidden del navegador:
+   pasó con .hero-button, .member-card, .bug-hunt y .taste-card-area. El
+   !important es deliberado: hidden tiene que ganar siempre. */
+[hidden] {
+  display: none !important;
+}
+
 /* body en columna + .site-main flexible: mantiene el footer abajo sin depender
    de un alto fijo de header/footer, que cambia cuando el header se apila. */
 body {
@@ -285,12 +292,6 @@ code {
   margin-top: var(--space-md);
   padding: var(--pad-control);
   text-decoration: none;
-}
-
-/* display: inline-block le gana al atributo hidden: sin esto los reinicios
-   que arrancan ocultos se ven desde el principio */
-.hero-button[hidden] {
-  display: none;
 }
 
 .hero-button--light {
@@ -672,10 +673,6 @@ img.profile-photo {
   display: block;
 }
 
-.member-card[hidden] {
-  display: none;
-}
-
 .carousel-controls {
   align-items: center;
   display: flex;
@@ -726,11 +723,6 @@ img.profile-photo {
 .member-card a {
   font-weight: 700;
   margin-top: auto;
-}
-
-.member-card[hidden],
-.empty-state[hidden] {
-  display: none;
 }
 
 .empty-state {

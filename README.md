@@ -299,7 +299,7 @@ Debe devolver un array vacío. Conviene incluir 412px en la prueba: es el ancho 
 **Qué hace:** muestra mis películas y discos favoritos de a una tarjeta por vez; el visitante responde "Me gusta" o "No es lo mío" en cada una y, al terminar el mazo, la página calcula el porcentaje de coincidencia con una barra de progreso y un mensaje que cambia según el nivel de compatibilidad. Incluye un botón para reiniciar el recorrido.
 **Por qué la elegí:** una lista de favoritos se lee y se olvida; convertirla en una comparación hace que el visitante se detenga en cada película y disco, y le da un resultado propio al final.
 
-![Captura](img/capturas/perfil-nicolas.png)
+![Captura del comparador de gustos de Nicolás con el resultado de compatibilidad](img/capturas/perfil-nicolas.png)
 
 ### Perfil — Laura Belén Blanco
 
@@ -326,7 +326,7 @@ Debe devolver un array vacío. Conviene incluir 412px en la prueba: es el ancho 
 **Qué hace:** presenta tres situaciones: una falla antes de una entrega, una tarea urgente poco clara y un cambio que rompe el proyecto. Cada una ofrece tres respuestas que otorgan 3, 2 o 1 punto. La barra y el indicador muestran el avance; al responder la tercera pregunta, el puntaje total define el resultado: estratega (8–9), colaborativo (5–7) o resolutivo (3–4), que reemplaza a la pregunta en una tarjeta con el nombre del perfil, su descripción y el puntaje obtenido. «Volver a intentar» oculta el resultado, reinicia el puntaje y vuelve a la primera situación.
 **Por qué la elegí:** relacionar decisiones ante problemas urgentes con distintos enfoques de resolución y colaboración.
 
-![Captura](img/capturas/perfil-laura-olivera.png)
+![Captura del test de Laura Olivera con la tarjeta de resultado](img/capturas/perfil-laura-olivera.png)
 
 ### Perfil — Fernando Guevara
 
@@ -335,7 +335,7 @@ Debe devolver un array vacío. Conviene incluir 412px en la prueba: es el ancho 
 **Qué hace:** reúne tres controles. Al activar la foto con clic, Enter o Espacio, gira y alterna entre el retrato y un saludo. En la lista, los discos «Harvest Moon», «Reveal» y «Guess Who» despliegan u ocultan una nota personal; también responden a Enter y Espacio. En el rincón musical, los botones de esos tres discos actualizan el dato curioso mostrado y señalan cuál está seleccionado.
 **Por qué la elegí:** presentar mis gustos musicales junto con notas personales y datos breves sobre cada disco.
 
-![Captura](img/capturas/perfil-fernando.png)
+![Captura del perfil de Fernando con la foto girada y el Rincón Musical](img/capturas/perfil-fernando.png)
 
 ---
 
