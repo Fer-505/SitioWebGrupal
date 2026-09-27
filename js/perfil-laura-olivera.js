@@ -38,7 +38,7 @@ function showQuestion() {
     const question = questions[currentQuestion];
     questionTitle.textContent = question.title;
     progressLabel.textContent = `Situación ${currentQuestion + 1} de ${questions.length}`;
-    progressBar.style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
+    progressBar.style.width = `${((currentQuestion) / questions.length) * 100}%`;
     optionsContainer.innerHTML = "";
 
     question.options.forEach((option) => {
