@@ -60,7 +60,8 @@
 
         <p>
           La auditoría de Christian sobre el perfil de Laura Blanco (entrada del 26/09) dejó dos problemas
-          reportados pero sin corregir. Los resolvimos acá.
+          reportados pero sin corregir. Los resolvimos acá, junto con un problema de estilos de los botones
+          que encontramos revisando el perfil de Nicolás y la presentación del resultado del test de Laura Olivera.
         </p>
 
         <h3>«Volver a intentar» activo antes de jugar</h3>
@@ -88,6 +89,55 @@
           <li>
             Agregamos debajo de la introducción una fila «Ir a un perfil» con enlaces a los cinco integrantes.
             Reutiliza <code>.hero-button--light</code>, el mismo estilo de la navegación de los perfiles.
+          </li>
+        </ul>
+
+        <h3>Los botones de las interacciones no se parecían al resto</h3>
+        <ul>
+          <li>
+            Revisando el perfil de Nicolás notamos que «Me gusta», «No es lo mío» y «Volver a intentar» se veían
+            distintos de los botones de navegación, aunque usaban las mismas clases. Medimos los estilos en el
+            navegador: los enlaces tenían DM Sans de 16,8px sin borde, y los botones tenían Arial de 13,3px con un
+            borde negro en relieve y cursor de flecha.
+          </li>
+          <li>
+            La causa: <code>.hero-button</code> se pensó para enlaces <code>&lt;a&gt;</code>, y estos son
+            <code>&lt;button&gt;</code>. El navegador les aplica estilos propios que la clase no anulaba.
+            Agregamos <code>border: 0</code>, <code>cursor: pointer</code> y <code>font: inherit</code> (antes de
+            <code>font-weight</code>, porque el atajo resetea el peso). Con eso se arreglaron a la vez los botones
+            de Nicolás, Laura Blanco y Laura Olivera.
+          </li>
+          <li>
+            Encontramos además que el «Volver a intentar» de Laura Olivera se veía desde el inicio aunque tenía el
+            atributo <code>hidden</code>: el <code>display: inline-block</code> de <code>.hero-button</code> le
+            ganaba. Laura Blanco lo había resuelto solo en su perfil con <code>.bug-hunt [hidden]</code>. Lo
+            reemplazamos por una regla general, <code>.hero-button[hidden]</code>, en <code>css/base.css</code>.
+          </li>
+          <li>
+            Unificamos los cuatro «Volver a intentar» del sitio con <code>hero-button hero-button--light</code>.
+            Antes, uno era blanco, otro turquesa y el de la trivia de Christian usaba la píldora de selección de
+            películas (<code>.cinema-btn</code>). Con el cambio sobró la clase <code>.trivia-reset</code>, porque
+            <code>.hero-button</code> ya trae su margen, y la eliminamos.
+          </li>
+        </ul>
+
+        <h3>El resultado del test de Laura Olivera quedaba fuera de su tarjeta</h3>
+        <ul>
+          <li>
+            Al terminar el test, el JavaScript reutilizaba la caja de la pregunta: le ponía el título «Tu resultado»
+            y la dejaba vacía, y el perfil aparecía debajo, afuera de cualquier tarjeta, como texto turquesa suelto.
+            Se veía una caja vacía y un texto flotando.
+          </li>
+          <li>
+            Ahora, al terminar, la caja de la pregunta se oculta y el resultado ocupa su lugar con la misma
+            tarjeta translúcida: arriba «Tu resultado», el nombre del perfil como título, la descripción y el
+            puntaje obtenido (por ejemplo, «Puntaje: 6 de 9»). Es el mismo patrón que la tarjeta de resultado del
+            comparador de gustos.
+          </li>
+          <li>
+            Los tres perfiles (estratega, colaborativo, resolutivo) pasaron a un arreglo con su puntaje mínimo, en
+            lugar de dos operadores ternarios anidados. Así, el nombre y la descripción se pueden mostrar por
+            separado.
           </li>
         </ul>
       </article>

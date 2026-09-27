@@ -320,7 +320,7 @@ Debe devolver un array vacío. Conviene incluir 412px en la prueba: es el ancho 
 
 **Función:** test de resolución bajo presión
 **Archivo:** `js/perfil-laura-olivera.js`
-**Qué hace:** presenta tres situaciones: una falla antes de una entrega, una tarea urgente poco clara y un cambio que rompe el proyecto. Cada una ofrece tres respuestas que otorgan 3, 2 o 1 punto. La barra y el indicador muestran el avance; al responder la tercera pregunta, el puntaje total define el resultado: estratega (8–9), colaborativo (5–7) o resolutivo (3–4). «Volver a intentar» oculta el resultado, reinicia el puntaje y vuelve a la primera situación.
+**Qué hace:** presenta tres situaciones: una falla antes de una entrega, una tarea urgente poco clara y un cambio que rompe el proyecto. Cada una ofrece tres respuestas que otorgan 3, 2 o 1 punto. La barra y el indicador muestran el avance; al responder la tercera pregunta, el puntaje total define el resultado: estratega (8–9), colaborativo (5–7) o resolutivo (3–4), que reemplaza a la pregunta en una tarjeta con el nombre del perfil, su descripción y el puntaje obtenido. «Volver a intentar» oculta el resultado, reinicia el puntaje y vuelve a la primera situación.
 **Por qué la elegí:** relacionar decisiones ante problemas urgentes con distintos enfoques de resolución y colaboración.
 
 ![Captura](img/capturas/perfil-laura-olivera.png)

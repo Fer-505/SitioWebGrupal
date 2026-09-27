@@ -177,6 +177,7 @@
 /* Paneles translúcidos sobre el fondo del widget */
 .cinema-display-area,
 .test-question,
+.test-result,
 .taste-card,
 .taste-result-area,
 .music-display-area,
@@ -188,6 +189,7 @@
 
 .cinema-display-area,
 .test-question,
+.test-result,
 .taste-result-area,
 .music-display-area {
     padding: var(--space-lg);
@@ -326,11 +328,6 @@
     min-height: 1.5rem;
 }
 
-/* El botón arranca con hidden y el JS lo muestra al responder */
-.trivia-reset {
-    margin-top: var(--space-md);
-}
-
 .trivia-result.success {
     color: var(--color-success);
 }
@@ -378,11 +375,29 @@
     border-color: var(--color-accent);
 }
 
-.test-result {
-    margin: var(--space-lg) 0;
+/* Ocupa el lugar de .test-question al terminar: misma caja, contenido de resultado */
+.test-result h3 {
     color: var(--color-accent);
+    margin: var(--space-xs) 0 var(--space-sm);
+}
+
+.test-result p {
+    color: var(--color-on-dark);
     font-size: var(--fs-md);
+    margin: 0;
+}
+
+/* .test-result p le gana a .eyebrow en especificidad: se repiten sus valores */
+.test-result .eyebrow {
+    color: var(--color-muted-on-dark);
+    font-size: var(--fs-xs);
+}
+
+.test-result .test-score {
+    color: var(--color-muted-on-dark);
+    font-size: var(--fs-sm);
     font-weight: 700;
+    margin-top: var(--space-md);
 }
 
 /* --- Comparador de gustos (Nicolás Zalazar) ------------------------------ */
@@ -587,11 +602,6 @@
     border-radius: var(--radius);
     background: var(--color-glass-soft);
     color: var(--color-on-dark);
-}
-
-/* hero-button define display: inline-block y pisa el atributo hidden */
-.bug-hunt [hidden] {
-    display: none;
 }
 
 /* 6. MEDIA QUERIES =========================================================

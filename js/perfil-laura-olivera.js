@@ -25,6 +25,15 @@ const questions = [
     }
 ];
 
+// Del puntaje más alto al más bajo: el primero cuyo mínimo se alcanza es el resultado
+const profiles = [
+    { min: 8, name: "Perfil estratega", text: "Analizás, priorizás y encontrás soluciones claras." },
+    { min: 5, name: "Perfil colaborativo", text: "Combinás análisis y trabajo en equipo para avanzar." },
+    { min: 0, name: "Perfil resolutivo", text: "Actuás rápido y aprendés mientras buscás una solución." }
+];
+const maxScore = questions.length * 3;
+
+const questionBox = document.querySelector(".test-question");
 const questionTitle = document.querySelector("#test-question-title");
 const optionsContainer = document.querySelector("#test-options");
 const progressLabel = document.querySelector("#test-progress-label");
@@ -57,17 +66,17 @@ function showQuestion() {
 }
 
 function showResult() {
-    const profile = score >= 8
-        ? "Perfil estratega: analizás, priorizás y encontrás soluciones claras."
-        : score >= 5
-            ? "Perfil colaborativo: combinás análisis y trabajo en equipo para avanzar."
-            : "Perfil resolutivo: actuás rápido y aprendés mientras buscás una solución.";
+    const profile = profiles.find((item) => score >= item.min);
 
-    questionTitle.textContent = "Tu resultado";
-    optionsContainer.innerHTML = "";
+    // El resultado reemplaza a la caja de la pregunta en lugar de quedar debajo de ella
+    questionBox.hidden = true;
     progressLabel.textContent = "Test completado";
     progressBar.style.width = "100%";
-    result.textContent = profile;
+    result.innerHTML = `
+        <p class="eyebrow">Tu resultado</p>
+        <h3>${profile.name}</h3>
+        <p>${profile.text}</p>
+        <p class="test-score">Puntaje: ${score} de ${maxScore}</p>`;
     result.hidden = false;
     restartButton.hidden = false;
 }
@@ -75,6 +84,7 @@ function showResult() {
 function restartTest() {
     currentQuestion = 0;
     score = 0;
+    questionBox.hidden = false;
     result.hidden = true;
     restartButton.hidden = true;
     showQuestion();
