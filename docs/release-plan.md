@@ -116,7 +116,7 @@ Repetir por cada uno de los 5 integrantes (una tarea/issue por perfil):
 ## Sprint 4 — QA cruzado, Bitácora y README finales, documentación de IA · **Jue 24/09 → Vie 25/09**
 **Dependencia:** Sprints 1–3 cerrados funcionalmente.
 
-- [ ] Revisión cruzada completa: cada integrante navega el sitio como usuario nuevo, sin usar el botón Atrás, y reporta enlaces rotos o fricciones
+- [x] Revisión cruzada completa: cada integrante navega el sitio como usuario nuevo, sin usar el botón Atrás, y reporta enlaces rotos o fricciones
 - [x] Abrir consola del navegador en cada página y confirmar cero errores de JS
 - [x] Cerrar la Bitácora: revisar que tenga entradas fechadas y reales de cada sprint (no una sola entrada final) — decisiones, dificultades, cambios de rumbo
 - [x] Completar la sección de uso de IA en el README:

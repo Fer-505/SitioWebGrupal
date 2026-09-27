@@ -5,6 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bitácora de desarrollo — Grupo 15</title>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -53,6 +56,51 @@
       </nav>
 
       <!-- Las entradas conservan su fecha; las decisiones de diseño se registran por separado. -->
+
+      <article class="bitacora-entry">
+        <time datetime="2026-09-27">27 de septiembre de 2026</time>
+        <h2>Sprint 4 — Favicon del sitio</h2>
+
+        <h3>Problema</h3>
+        <ul>
+          <li>
+            El sitio no tenía ícono: la pestaña mostraba el genérico del navegador y cada primera carga pedía
+            <code>/favicon.ico</code> y recibía un 404 que aparecía en la consola.
+          </li>
+        </ul>
+
+        <h3>Decisiones</h3>
+        <ul>
+          <li>
+            Diseñamos un «15» (nuestro número de grupo) sobre un cuadrado redondeado con el mismo degradado del
+            hero (<code>#151e5c</code> → <code>#29256f</code> → <code>#4b267f</code>). El «1» va en
+            <code>--color-text</code> y el «5» en el turquesa de acento <code>#53d6d2</code>, para que se
+            reconozca como parte de la misma identidad visual.
+          </li>
+          <li>
+            Los números están dibujados con trazos y no con texto, porque un favicon no carga las fuentes de
+            Google y cambiaría de tipografía según el equipo.
+          </li>
+          <li>
+            Usamos tres archivos: <code>img/favicon.svg</code> como ícono principal, <code>favicon.ico</code>
+            en la raíz (16, 32 y 48&nbsp;px) como respaldo para navegadores sin soporte de SVG y
+            <code>img/apple-touch-icon.png</code> (180&nbsp;px) para accesos directos en iOS.
+          </li>
+        </ul>
+
+        <h3>Cómo lo verificamos</h3>
+        <ul>
+          <li>
+            Revisamos el ícono en 16, 32, 64 y 128&nbsp;px sobre pestañas claras y oscuras: el «15» se lee
+            incluso en el tamaño más chico.
+          </li>
+          <li>
+            Agregamos los enlaces en el <code>&lt;head&gt;</code> de las siete páginas y comprobamos que los
+            tres archivos respondieran 200 en cada una; el 404 dejó de aparecer. También sumamos los archivos
+            a la estructura de carpetas del README.
+          </li>
+        </ul>
+      </article>
 
       <article class="bitacora-entry">
         <time datetime="2026-09-27">27 de septiembre de 2026</time>

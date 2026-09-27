@@ -58,12 +58,12 @@ El sitio se compone de:
 |---|---|---|
 | Portada (`index.html`) | Laura Olivera | Estructura, contenido y función JS de la portada |
 | Paleta y tipografía | Laura Olivera | Definir colores, Google Fonts e iconografía; mantener `css/base.css` |
-| Template de perfil | No quedó registrado | Diseñar la estructura base que reutilizan todos los perfiles |
-| Bitácora y documentación | Nicolás Zalazar | Mantener `bitacora.html` y el README actualizados por sprint |
+| Template de perfil | Laura Belén Blanco y Christian Albornoz | Diseñar la estructura base que reutilizan todos los perfiles |
+| Bitácora y documentación | Nicolás Zalazar y Fernando Guevara | Mantener `bitacora.html` y el README actualizados por sprint |
 | Página individual | Cada integrante | Cada persona es dueña de su propio perfil y su función JS |
 
 **Canal de comunicación del equipo:** grupo de WhatsApp
-**Frecuencia de sincronización:** no quedó registrada una cadencia fija.
+**Frecuencia de sincronización:** luego de cada sprint terminado.
 
 ---
 
@@ -85,7 +85,7 @@ El sitio se compone de:
 ### Ramas
 
 - `main`: rama estable. Solo recibe cambios vía Pull Request.
-- `development`: rama de integración de los sprints.
+- `development`: rama de integración de los sprints. Solo recibe cambios vía Pull Request.
 - `feature/<nombre-tarea>` o `<n>-<slug-del-issue>`: una rama por tarea/issue. Ejemplo: `1-sprint-0-gobernanza-del-proyecto`.
 
 Flujo: `feature/*` → PR hacia `development` → al cerrar un sprint, PR de `development` hacia `main`.
@@ -130,6 +130,7 @@ SitioWebGrupal/
 ├── christian-albornoz.html
 ├── laura-olivera.html
 ├── fernando-guevara.html
+├── favicon.ico                # Ícono de respaldo para navegadores sin soporte de SVG
 ├── css/
 │   ├── base.css               # Tokens (:root), reset, layout y componentes de portada
 │   ├── nav.css                # Cabecera y navegación, compartidas por las 7 páginas
@@ -143,7 +144,9 @@ SitioWebGrupal/
 │   └── perfil-fer.js
 ├── img/
 │   ├── perfiles/              # Fotos o avatares de los integrantes (Sprint 2)
-│   └── capturas/              # Evidencias de las funciones JavaScript
+│   ├── capturas/              # Evidencias de las funciones JavaScript
+│   ├── favicon.svg            # Ícono del sitio («15» con la paleta del hero)
+│   └── apple-touch-icon.png   # Ícono de 180 px para accesos directos en iOS
 ├── docs/
 │   └── release-plan.md        # Plan de sprints del equipo
 ├── .github/
@@ -360,7 +363,7 @@ Registra, por sprint, las decisiones tomadas, los problemas encontrados y cómo 
 | Claude Code | Claude Opus 5 y Claude Opus 5.5 | Pago | Uso frecuente antes de este TP |
 | Gemini | Gemini 2.5 Flash / Web | Gratuito | Uso frecuente antes de este TP |
 | GitHub Copilot Chat | Modelo asignado a esta sesión; identificador no registrado | Free | Usado en la revisión del Sprint 4; experiencia previa específica no registrada |
-| Claude (chat en claude.ai) | Claude Opus 5.5 | [Pago] | Uso frecuente en el trabajo como QA y en la facultad |
+| Claude (chat en claude.ai) | Claude Opus 5.5 | Pago | Uso frecuente en el trabajo como QA y en la facultad |
 
 ### En qué asistió
 
@@ -399,7 +402,6 @@ Los avatares se generaron enviando imágenes adjuntas a Gemini; por eso no se af
 
 ## 12. Evolución del proyecto
 
-<!-- BORRADOR: propuesta a validar por el equipo antes de la entrega -->
 
 Estas son las líneas que el equipo propone ampliar en los próximos TPs. Cada una parte de un límite concreto que encontramos en este sitio:
 
