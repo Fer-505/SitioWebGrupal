@@ -36,11 +36,314 @@
       <h1>Bitácora de desarrollo</h1>
       <p>
         Registro de decisiones, dificultades y cambios durante el desarrollo del sitio, con su fecha real.
-        Cada sprint suma al menos una entrada con fecha real.
+        Cada sprint suma al menos una entrada con fecha real. Las entradas están ordenadas de la más reciente
+        a la más antigua.
       </p>
+
+      <!-- Sin esto, desde la bitácora solo se podía volver a un perfil pasando por Inicio -->
+      <nav class="bitacora-nav" aria-label="Perfiles del equipo">
+        <p class="eyebrow">Ir a un perfil</p>
+        <ul>
+          <li><a href="nicolas-zalazar.html" class="hero-button hero-button--light">Nicolás Zalazar</a></li>
+          <li><a href="laura-blanco.html" class="hero-button hero-button--light">Laura Blanco</a></li>
+          <li><a href="christian-albornoz.html" class="hero-button hero-button--light">Christian Albornoz</a></li>
+          <li><a href="laura-olivera.html" class="hero-button hero-button--light">Laura Olivera</a></li>
+          <li><a href="fernando-guevara.html" class="hero-button hero-button--light">Fernando Guevara</a></li>
+        </ul>
+      </nav>
 
       <!-- Las entradas conservan su fecha; las decisiones de diseño se registran por separado. -->
 
+      <article class="bitacora-entry">
+        <time datetime="2026-09-27">27 de septiembre de 2026</time>
+        <h2>Sprint 4 — Revisión cruzada de Laura Blanco sobre el perfil de Fernando</h2>
+
+        <h3>Cómo lo revisé</h3>
+        <ul>
+          <li>
+            Entré desde la portada y recorrí <code>fernando-guevara.html</code> sin usar el botón Atrás, con la
+            consola abierta (0 errores de JS). Lo probé en 400, 900 y 1200px: sin desborde horizontal y con
+            todos los enlaces funcionando.
+          </li>
+          <li>
+            Probé las tres interacciones con mouse y con teclado: los discos que se expanden, el «Rincón Musical»
+            y el giro de la foto. Las tres funcionan.
+          </li>
+        </ul>
+
+        <h3>Lo que corregí</h3>
+        <ul>
+          <li>
+            <strong>Títulos distintos al resto de los perfiles.</strong> Fernando usaba «Habilidades»,
+            «Películas favoritas» y «Discos favoritos», mientras que los otros cuatro perfiles usan
+            «Habilidades Clave», «Películas Favoritas» y «Discos Favoritos». Los unifiqué para que la maquetación
+            sea uniforme.
+          </li>
+          <li>
+            <strong>El giro de la foto no se descubría.</strong> La única pista era un tooltip que aparece al
+            pasar el mouse, así que en celular nadie podía enterarse de que la foto se da vuelta. Agregué debajo
+            del avatar el texto «Tocá la foto para darla vuelta», con la clase
+            <code>.profile-avatar-container--hint</code> para que quede debajo de la foto sin cambiar los demás
+            perfiles.
+          </li>
+        </ul>
+
+        <h3>Lo que reporté sin corregir</h3>
+        <ul>
+          <li>
+            El mensaje de la foto dice «Pase nomás! Sientese…»: faltan los signos de apertura y la tilde de
+            «Siéntese». Lo dejé para que Fernando decida el texto.
+          </li>
+          <li>
+            Al girar la foto, el avatar circular se convierte en un rectángulo y en celular empuja el contenido
+            hacia abajo.
+          </li>
+          <li>
+            Los discos que se expanden no muestran ningún ícono que indique que se pueden abrir, y les falta
+            <code>role="button"</code> para que un lector de pantalla los anuncie como desplegables.
+          </li>
+          <li>
+            General para todos los perfiles: en 400px el nombre queda corrido a la izquierda, porque el
+            <code>h1</code> tiene <code>max-width: 10ch</code> sin margen automático. Como es CSS compartido,
+            lo comenté en el grupo antes de tocarlo.
+          </li>
+        </ul>
+      </article>
+
+      <article class="bitacora-entry">
+        <time datetime="2026-09-27">27 de septiembre de 2026</time>
+        <h2>Sprint 4 — Correcciones de lo reportado en la revisión cruzada</h2>
+
+        <p>
+          La auditoría de Christian sobre el perfil de Laura Blanco (entrada del 26/09) dejó dos problemas
+          reportados pero sin corregir. Los resolvimos acá, junto con un problema de estilos de los botones
+          que encontramos revisando el perfil de Nicolás y la presentación del resultado del test de Laura Olivera.
+        </p>
+
+        <h3>«Volver a intentar» activo antes de jugar</h3>
+        <ul>
+          <li>
+            En «Encontrá el bug», el botón de reinicio se podía pulsar desde el inicio, cuando todavía no había
+            nada que reiniciar. Antes del 25/09 estaba oculto hasta terminar el juego; al hacerlo visible para
+            poder reiniciar a mitad de partida, quedó habilitado también antes de empezar.
+          </li>
+          <li>
+            Ahora el botón arranca oculto y aparece cuando el visitante revisa el primer dato, es decir, cuando
+            empieza a jugar. Al reiniciar se vuelve a ocultar. Así sigue sirviendo para reiniciar a mitad de
+            partida, y funciona igual que la trivia de Christian y el test de Laura Olivera, donde el reinicio
+            aparece recién cuando hay algo que reiniciar.
+          </li>
+        </ul>
+
+        <h3>La bitácora no tenía salida hacia los perfiles</h3>
+        <ul>
+          <li>
+            Desde un perfil se llega a la bitácora con «Ver bitácora», pero desde la bitácora solo había
+            enlaces a Inicio. Para volver al perfil había que pasar por la portada o usar el botón Atrás, que es
+            justo lo que la consigna pide evitar.
+          </li>
+          <li>
+            Agregamos debajo de la introducción una fila «Ir a un perfil» con enlaces a los cinco integrantes.
+            Reutiliza <code>.hero-button--light</code>, el mismo estilo de la navegación de los perfiles.
+          </li>
+        </ul>
+
+        <h3>Los botones de las interacciones no se parecían al resto</h3>
+        <ul>
+          <li>
+            Revisando el perfil de Nicolás notamos que «Me gusta», «No es lo mío» y «Volver a intentar» se veían
+            distintos de los botones de navegación, aunque usaban las mismas clases. Medimos los estilos en el
+            navegador: los enlaces tenían DM Sans de 16,8px sin borde, y los botones tenían Arial de 13,3px con un
+            borde negro en relieve y cursor de flecha.
+          </li>
+          <li>
+            La causa: <code>.hero-button</code> se pensó para enlaces <code>&lt;a&gt;</code>, y estos son
+            <code>&lt;button&gt;</code>. El navegador les aplica estilos propios que la clase no anulaba.
+            Agregamos <code>border: 0</code>, <code>cursor: pointer</code> y <code>font: inherit</code> (antes de
+            <code>font-weight</code>, porque el atajo resetea el peso). Con eso se arreglaron a la vez los botones
+            de Nicolás, Laura Blanco y Laura Olivera.
+          </li>
+          <li>
+            Encontramos además que el «Volver a intentar» de Laura Olivera se veía desde el inicio aunque tenía el
+            atributo <code>hidden</code>: el <code>display: inline-block</code> de <code>.hero-button</code> le
+            ganaba. Laura Blanco lo había resuelto solo en su perfil con <code>.bug-hunt [hidden]</code>. Lo
+            reemplazamos por una regla general, <code>.hero-button[hidden]</code>, en <code>css/base.css</code>.
+          </li>
+          <li>
+            Unificamos los cuatro «Volver a intentar» del sitio con <code>hero-button hero-button--light</code>.
+            Antes, uno era blanco, otro turquesa y el de la trivia de Christian usaba la píldora de selección de
+            películas (<code>.cinema-btn</code>). Con el cambio sobró la clase <code>.trivia-reset</code>, porque
+            <code>.hero-button</code> ya trae su margen, y la eliminamos.
+          </li>
+        </ul>
+
+        <h3>El resultado del test de Laura Olivera quedaba fuera de su tarjeta</h3>
+        <ul>
+          <li>
+            Al terminar el test, el JavaScript reutilizaba la caja de la pregunta: le ponía el título «Tu resultado»
+            y la dejaba vacía, y el perfil aparecía debajo, afuera de cualquier tarjeta, como texto turquesa suelto.
+            Se veía una caja vacía y un texto flotando.
+          </li>
+          <li>
+            Ahora, al terminar, la caja de la pregunta se oculta y el resultado ocupa su lugar con la misma
+            tarjeta translúcida: arriba «Tu resultado», el nombre del perfil como título, la descripción y el
+            puntaje obtenido (por ejemplo, «Puntaje: 6 de 9»). Es el mismo patrón que la tarjeta de resultado del
+            comparador de gustos.
+          </li>
+          <li>
+            Los tres perfiles (estratega, colaborativo, resolutivo) pasaron a un arreglo con su puntaje mínimo, en
+            lugar de dos operadores ternarios anidados. Así, el nombre y la descripción se pueden mostrar por
+            separado.
+          </li>
+        </ul>
+
+        <h3>Lo que Laura Blanco reportó en el perfil de Fernando</h3>
+        <ul>
+          <li>
+            <strong>El giro de la foto deformaba el encabezado.</strong> Al medirlo resultó más grave que lo
+            reportado: entre 412 y 600px, la tarjeta del encabezado pasaba de 578 a 1207px de alto. El reverso
+            (<code>.profile-photo-flip-message</code>) no tenía tamaño fijo, así que medía lo que el texto en una
+            sola línea (351px), ensanchaba la columna del avatar y aplastaba la del nombre. Ahora el reverso es
+            un círculo del mismo tamaño que la foto, con el texto en <code>--fs-xs</code>. El alto de la tarjeta
+            ya no cambia al girar en ningún ancho.
+          </li>
+          <li>
+            <strong>El nombre quedaba corrido a la izquierda en mobile.</strong> El <code>h1</code> global tiene
+            <code>max-width: 10ch</code>: en 400px el texto estaba centrado, pero su caja quedaba pegada a la
+            izquierda, 14px fuera del centro. Agregamos <code>margin-inline: auto</code> al <code>h1</code> del
+            encabezado de perfil, solo en el breakpoint de 400px, donde el encabezado se apila. Corrige los cinco
+            perfiles.
+          </li>
+          <li>
+            Quedan para Fernando los otros dos puntos del reporte: los signos y la tilde del mensaje de la foto
+            (es su texto) y el indicador y <code>role="button"</code> de los discos desplegables.
+          </li>
+        </ul>
+      </article>
+
+      <article class="bitacora-entry">
+        <time datetime="2026-09-26">26 de septiembre de 2026</time>
+        <h2>Sprint 4 — Revisión cruzada y correcciones de QA</h2>
+
+        <h3>Cómo hicimos la revisión cruzada</h3>
+        <ul>
+          <li>
+            Después de la auditoría automatizada del 25/09, cada integrante que revisó el sitio corrigió lo que
+            encontró en su propia rama y lo integró por Pull Request:
+            <ul>
+              <li>
+                <strong>Laura Olivera</strong> (PR #25) recorrió las interacciones y corrigió los botones del
+                carrusel, el reinicio de «Encontrá el bug», la falta de reinicio en la trivia y la paginación de
+                su perfil. El detalle está en la entrada del 25/09.
+              </li>
+              <li>
+                <strong>Christian Albornoz</strong> (PR #27) rehízo el reinicio de su trivia para que no repitiera
+                la cita.
+              </li>
+              <li>
+                <strong>Christian Albornoz — Auditoría sobre Laura Blanco:</strong> navegó <code>laura-blanco.html</code> sin usar el botón Atrás y con consola abierta (0 errores de JS). Reportó que en «Encontrá el bug», el botón «Volver a intentar» se encuentra habilitado para hacer clic desde el inicio antes de interactuar con las opciones, y señaló la fricción de navegación al acceder a la bitácora sin un enlace directo de retorno.
+              </li>
+              <li>
+                <strong>Nicolás Zalazar</strong> auditó el Sprint 4 contra el plan, detectó los botones invisibles
+                al pasar el mouse y encontró que el PR #27 había deshecho mejoras del Sprint 3 en el perfil de
+                Christian.
+              </li>
+              <li>
+                <strong>Fernando Guevara</strong> revisó el perfil de Nicolás y aprobó su funcionalidad, consola, diseño responsivo y navegación.
+                El perfil fue probado en las funcionalidades principales y en distintos tamaños de pantalla. No se encontraron errores durante las pruebas realizadas, por lo que se considera que cumple con los requisitos revisados y queda aprobado.
+              </li>
+              <li>
+              <strong>Fernando Guevara — Auditoría sobre Laura Olivera:</strong> recorrió <code>laura-olivera.html</code>
+              en 400, 900 y 1200px, probó el test «¿Cómo resolvés bajo presión?» completo (las tres situaciones y el
+              reinicio) y confirmó 0 errores de JS. Encontró que la barra de progreso se adelantaba un paso: mostraba
+              el porcentaje de la pregunta siguiente en vez de la ya respondida (no afectaba el puntaje final). Se
+              corrigió en <code>js/perfil-laura-olivera.js</code> sacando el <code>+ 1</code> del cálculo del ancho.
+            </li>
+          </ul>
+          </li>
+          <li>
+            Cada revisión se hizo sobre el trabajo de otra persona. Así, lo que pasó por alto quien escribió el
+            código lo encontró otro integrante, como el hover que afectaba a todos los perfiles o la regresión del
+            perfil de Christian.
+          </li>
+        </ul>
+
+        <h3>El reinicio de la trivia volvía a escribir la cita</h3>
+        <ul>
+          <li>
+            El «Volver a intentar» de la trivia de Christian, agregado el día anterior, estaba siempre visible
+            y volvía a cargar toda la película: repetía el efecto de máquina de escribir de la cita aunque el
+            visitante solo quisiera responder otra vez.
+          </li>
+          <li>
+            Lo rehicimos como una función <code>resetTrivia()</code> que solo limpia el feedback, quita las
+            marcas de acierto y error y vuelve a habilitar las opciones. El botón aparece recién después de
+            responder.
+          </li>
+          <li>
+            Como el botón nuevo reutiliza la clase <code>.cinema-btn</code> de los selectores de película, el
+            JavaScript lo tomaba como una película más. Acotamos el selector a
+            <code>.cinema-selector .cinema-btn</code>.
+          </li>
+        </ul>
+
+        <h3>El reinicio de la trivia deshizo cambios anteriores</h3>
+        <ul>
+          <li>
+            El commit del reinicio se hizo sobre una versión vieja de <code>christian-albornoz.html</code>. Al
+            integrarlo se perdieron cambios de los Sprints 3 y 4: los <code>preconnect</code> de Google Fonts,
+            el <code>width</code>/<code>height</code> del logo y del avatar (la página volvía a saltar mientras
+            cargaban las imágenes), el <code>&lt;span class="icon" aria-hidden="true"&gt;</code> de las flechas
+            (el lector de pantalla volvía a leer «flecha izquierda») y el <code>defer</code> del script. Además,
+            el botón nuevo traía estilos escritos en el HTML.
+          </li>
+          <li>
+            Restauramos todo eso sin tocar la lógica nueva del reinicio. El botón ahora se oculta con el
+            atributo <code>hidden</code> en lugar de <code>style.display</code>, y su margen vive en la clase
+            <code>.trivia-reset</code> de <code>css/perfil.css</code>.
+          </li>
+          <li>
+            Aprendizaje: antes de empezar una tarea hay que actualizar la rama con <code>git pull</code>, y en
+            el Pull Request hay que revisar el diff completo, no solo la función que se quería cambiar.
+          </li>
+        </ul>
+
+        <h3>Botones invisibles al pasar el mouse</h3>
+        <ul>
+          <li>
+            Recorriendo los perfiles notamos que los botones con fondo claro desaparecían al pasar el mouse
+            por encima: por ejemplo, «Perfil anterior (Laura Olivera)» en el perfil de Fernando quedaba del
+            mismo color que el fondo de la página.
+          </li>
+          <li>
+            La causa estaba en <code>css/base.css</code>: el <code>:hover</code> de <code>.hero-button</code>
+            cambiaba el fondo a <code>--color-surface</code>. Con la paleta clara de la primera propuesta
+            esa variable era un color claro, pero con el diseño 2 pasó a ser <code>#171d4b</code>, un azul
+            noche casi igual al fondo. El texto del botón es <code>--color-primary</code>
+            (<code>#111746</code>), así que quedaba texto oscuro sobre fondo oscuro.
+          </li>
+          <li>
+            No era un problema de una página: afectaba a todos los <code>.hero-button</code> del sitio
+            (navegación entre perfiles, «Volver al inicio», «Ver bitácora», los botones de las interacciones
+            y los de la portada).
+          </li>
+        </ul>
+
+        <h3>Cómo resolvimos los botones invisibles</h3>
+        <ul>
+          <li>
+            El hover y el foco de teclado ahora usan <code>--color-feature-soft</code> (<code>#9eece7</code>),
+            un turquesa claro que ya estaba en la paleta, y fijan el texto en <code>--color-primary</code>
+            para que siga siendo legible.
+          </li>
+          <li>
+            Aprendizaje: al cambiar la paleta en el Sprint 1 revisamos los colores base pero no los estados
+            <code>:hover</code> que dependían de ellos. Cuando se cambia un token hay que buscar todos los
+            lugares donde se usa, no solo el valor en <code>:root</code>.
+          </li>
+        </ul>
+      </article>
+      
       <article class="bitacora-entry">
         <time datetime="2026-09-25">25 de septiembre de 2026</time>
         <h2>Sprint 4 — Auditoría local de navegación y JavaScript</h2>
@@ -64,12 +367,39 @@
           </li>
         </ul>
 
+        <h3>Bugs encontrados y corregidos</h3>
+        <ul>
+          <li>
+            <strong>Los botones del carrusel de la portada no se leían.</strong> Tenían el texto en
+            <code>--color-surface</code> sobre fondo <code>--color-secondary</code>: con la paleta oscura
+            del diseño 2 los dos son azules oscuros. Pasamos el texto a <code>--color-text</code>. Además,
+            el estado deshabilitado solo bajaba la opacidad al 45%, así que casi no se distinguía del
+            fondo; ahora tiene fondo, borde y texto propios (<code>--color-bg-alt</code>,
+            <code>--color-card-border</code> y <code>--color-text-muted</code>).
+          </li>
+          <li>
+            <strong>La trivia de Christian no se podía volver a jugar.</strong> Al responder, las tres
+            opciones quedaban deshabilitadas y la única forma de reintentar era recargar la página o
+            cambiar de película. Agregamos un botón «Volver a intentar».
+          </li>
+          <li>
+            <strong>En «Encontrá el bug» de Laura Blanco no se podía reiniciar a mitad del juego.</strong>
+            El botón de reinicio arrancaba oculto y solo aparecía al encontrar los cuatro bugs. Lo dejamos
+            siempre visible.
+          </li>
+          <li>
+            <strong>La paginación de Laura Olivera era distinta a la del resto.</strong> Decía solo «Perfil
+            anterior» y «Siguiente perfil», mientras que los demás perfiles nombran a quién llevan. Le
+            agregamos los nombres (Christian Albornoz y Fernando Guevara).
+          </li>
+        </ul>
+
         <h3>Alcance pendiente</h3>
         <ul>
           <li>
             Esta comprobación automatizada no reemplaza la revisión cruzada personal de cada integrante.
             Falta que cada persona recorra el sitio en una sesión nueva y comparta sus observaciones de
-            enlaces y fricciones de uso.
+            enlaces y fricciones de uso. (Se hizo a continuación: ver la entrada del 26/09.)
           </li>
         </ul>
       </article>
@@ -155,6 +485,44 @@
       </article>
 
       <article class="bitacora-entry">
+        <time datetime="2026-09-24">24 de septiembre de 2026</time>
+        <h2>Sprint 2 — Perfiles individuales y contenido interactivo</h2>
+
+        <h3>Decisiones</h3>
+        <ul>
+          <li>Cada integrante armó su página sobre el mismo template (<code>profile-header-card</code>, tres
+            <code>service-card</code> con habilidades, películas y discos, y una tarjeta destacada para la
+            interacción) y trabajó en su propia rama con Pull Request hacia la rama del sprint.</li>
+          <li>Acordamos que ninguna interacción se repitiera entre perfiles. Quedaron cinco distintas: el
+            comparador de gustos de Nicolás, «Encontrá el bug» de Laura Blanco, la trivia de cine de
+            Christian (<em>Forrest Gump</em>, <em>Big Fish</em> y <em>Flores de Fuego</em>), el test de
+            resolución bajo presión de Laura Olivera y el rincón musical con foto giratoria de Fernando.</li>
+          <li>Los avatares se guardan en <code>img/perfiles/</code> y cada uno se integró en la tarjeta de la
+            portada y en su perfil con la clase <code>.profile-photo</code> (por ejemplo,
+            <code>perfil-christian-albornoz.jpg</code>).</li>
+          <li>Movimos los estilos de las interacciones a un archivo compartido, <code>css/perfil.css</code>, en
+            lugar de escribirlos dentro de cada HTML.</li>
+        </ul>
+
+        <h3>Dificultades</h3>
+        <ul>
+          <li>El perfil de Fernando se había armado por fuera del template: tuvimos que alinearlo a la estructura
+            compartida, a la paleta y al orden de la paginación entre compañeros.</li>
+          <li>En ese proceso se borraron por error las películas y los discos de Fernando, y el script de su
+            interacción no estaba enlazado en el HTML. Recuperamos el contenido y conectamos
+            <code>js/perfil-fer.js</code>.</li>
+          <li>Al mezclar las ramas de las fotos quedó un archivo de avatar duplicado de Fernando; lo eliminamos
+            para que el perfil use una sola imagen.</li>
+        </ul>
+
+        <h3>Próximos pasos</h3>
+        <ul>
+          <li>Verificar la navegación y el comportamiento responsivo en resoluciones de 400px, 900px y 1200px.</li>
+          <li>Revisar la integración completa con los perfiles del resto del equipo en la rama colectiva.</li>
+        </ul>
+      </article>
+
+      <article class="bitacora-entry">
         <time datetime="2026-09-22">22 de septiembre de 2026</time>
         <h2>Decisión de diseño — Sprint 1</h2>
 
@@ -163,6 +531,33 @@
           <li>Por medio del grupo de WhatsApp del equipo, aprobamos el diseño número 2
             (<strong>sprint1-2daopcion</strong>) como propuesta visual para continuar el proyecto.</li>
           <li>Dejamos sin efecto la propuesta anterior y continuamos el trabajo desde la rama seleccionada.</li>
+          <li>El cambio reemplazó la paleta clara de la primera propuesta (amarillo sobre fondo marfil) por una
+            paleta oscura: azul noche <code>#111746</code>, violeta <code>#342275</code>, acento turquesa
+            <code>#53d6d2</code> sobre fondo <code>#090d2d</code>. Es la que figura en la guía de estilos del
+            README.</li>
+        </ul>
+      </article>
+
+      <article class="bitacora-entry">
+        <time datetime="2026-09-21">21 de septiembre de 2026</time>
+        <h2>Sprint 1 — Portada y sistema visual base</h2>
+
+        <h3>Decisiones</h3>
+        <ul>
+          <li>Elegimos una paleta de azul profundo, azul medio, amarillo y fondo marfil para transmitir identidad de
+            equipo sin perder contraste. (Al día siguiente la reemplazamos: ver la decisión de diseño del 22/09.)</li>
+          <li>Elegimos <strong>Space Grotesk</strong> para títulos y <strong>DM Sans</strong> para textos: la primera
+            aporta personalidad y la segunda mantiene la lectura cómoda.</li>
+          <li>Separamos la navegación en <code>css/nav.css</code> para copiar la misma estructura en portada, perfiles y
+            bitácora.</li>
+          <li>Implementamos un buscador de integrantes en la portada. Filtra las tarjetas mientras se escribe y muestra
+            un estado vacío si no hay coincidencias.</li>
+        </ul>
+
+        <h3>Próximos pasos</h3>
+        <ul>
+          <li>Agregar los datos y contenidos de las cinco páginas individuales durante el Sprint 2.</li>
+          <li>Probar la navegación y el diseño en 400px, 900px y 1200px.</li>
         </ul>
       </article>
 
@@ -200,50 +595,6 @@
         <ul>
           <li>Cada integrante hace su primer commit agregando su nombre y perfil de GitHub al README.</li>
           <li>Sprint 1: definir paleta y Google Fonts, construir la portada y el componente de navegación.</li>
-        </ul>
-      </article>
-
-      <article class="bitacora-entry">
-        <time datetime="2026-09-21">21 de septiembre de 2026</time>
-        <h2>Sprint 1 — Portada y sistema visual base</h2>
-
-        <h3>Decisiones</h3>
-        <ul>
-          <li>Elegimos una paleta de azul profundo, azul medio, amarillo y fondo marfil para transmitir identidad de
-            equipo sin perder contraste.</li>
-          <li>Elegimos <strong>Space Grotesk</strong> para títulos y <strong>DM Sans</strong> para textos: la primera
-            aporta personalidad y la segunda mantiene la lectura cómoda.</li>
-          <li>Separamos la navegación en <code>css/nav.css</code> para copiar la misma estructura en portada, perfiles y
-            bitácora.</li>
-          <li>Implementamos un buscador de integrantes en la portada. Filtra las tarjetas mientras se escribe y muestra
-            un estado vacío si no hay coincidencias.</li>
-        </ul>
-
-        <h3>Próximos pasos</h3>
-        <ul>
-          <li>Agregar los datos y contenidos de las cinco páginas individuales durante el Sprint 2.</li>
-          <li>Probar la navegación y el diseño en 400px, 900px y 1200px.</li>
-        </ul>
-      </article>
-
-      <article class="bitacora-entry">
-        <time datetime="2026-09-24">24 de septiembre de 2026</time>
-        <h2>Sprint 2 — Perfiles individuales y contenido interactivo</h2>
-
-        <h3>Decisiones</h3>
-        <ul>
-          <li>Integramos el avatar estandarizado (<code>perfil-christian-albornoz.jpeg</code>) en la tarjeta de la
-            portada y en el perfil individual respetando la clase <code>.profile-photo</code>.</li>
-          <li>Estructuramos la página de perfil personal (<code>christian-albornoz.html</code>) manteniendo la
-            consistencia tipográfica y el esquema de color definido en el Sprint 1.</li>
-          <li>Implementamos una trivia interactiva en JavaScript sobre cine clásico (<em>Forrest Gump</em>, <em>Big
-              Fish</em> y <em>Flores de Fuego</em>) con validación de respuestas y feedback dinámico en el DOM.</li>
-        </ul>
-
-        <h3>Próximos pasos</h3>
-        <ul>
-          <li>Verificar la navegación y el comportamiento responsivo en resoluciones de 400px, 900px y 1200px.</li>
-          <li>Revisar la integración completa con los perfiles del resto del equipo en la rama colectiva.</li>
         </ul>
       </article>
     </div>

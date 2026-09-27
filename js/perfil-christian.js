@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function resetTrivia() {
         feedbackEl.textContent = '';
         feedbackEl.className = 'trivia-result';
-        if (resetBtn) resetBtn.style.display = 'none';
+        if (resetBtn) resetBtn.hidden = true;
 
         const allButtons = optionsEl.querySelectorAll('.trivia-opt-btn');
         allButtons.forEach(b => {
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     feedbackEl.className = 'trivia-result error';
                 }
 
-                if (resetBtn) resetBtn.style.display = 'inline-block';
+                if (resetBtn) resetBtn.hidden = false;
             });
 
             optionsEl.appendChild(btn);

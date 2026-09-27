@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christian Albornoz — Grupo 15</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap">
     <link rel="stylesheet" href="css/base.css">
@@ -21,7 +23,7 @@
                     <li><a href="bitacora.html">Bitácora</a></li>
                 </ul>
             </nav>
-            <img class="site-logo" src="img/logo-agencia.png.jpg"
+            <img class="site-logo" width="597" height="111" src="img/logo-agencia.png.jpg"
                 alt="Buenos Aires Aprende y Agencia de Habilidades para el Futuro">
         </div>
     </header>
@@ -31,15 +33,15 @@
 
             <!-- Barra de navegación interna (sin depender del navegador) -->
             <nav class="profile-nav-bar" aria-label="Navegación de retorno">
-                <a href="index.html" class="hero-button hero-button--light">← Volver al inicio</a>
-                <a href="bitacora.html" class="hero-button hero-button--light">Ver bitácora →</a>
+                <a href="index.html" class="hero-button hero-button--light"><span class="icon" aria-hidden="true">←</span> Volver al inicio</a>
+                <a href="bitacora.html" class="hero-button hero-button--light">Ver bitácora <span class="icon" aria-hidden="true">→</span></a>
             </nav>
 
             <!-- Introducción y Datos Personales -->
             <section class="profile-intro profile-header-card">
                 <div class="profile-avatar-container">
                     <!-- Si no tenés foto aún, se visualizan las iniciales con el estilo profile-photo de base.css -->
-                    <img class="profile-photo" src="img/perfiles/perfil-christian-albornoz.jpg"
+                    <img class="profile-photo" width="1024" height="1024" src="img/perfiles/perfil-christian-albornoz.jpg"
                         alt="Avatar de Christian Albornoz">
                 </div>
                 <div class="profile-main-info">
@@ -137,17 +139,16 @@
                         <div id="trivia-options" class="trivia-actions"></div>
                         <p id="trivia-feedback" class="trivia-result" aria-live="polite"></p>
                         <!-- Botón de Reinicio -->
-                        <button type="button" id="trivia-reset-btn" class="cinema-btn"
-                            style="display: none; margin-top: 1rem;">Volver a intentar</button>
+                        <button type="button" id="trivia-reset-btn" class="hero-button hero-button--light" hidden>Volver a intentar</button>
                     </div>
                 </div>
             </section>
 
             <!-- Navegación entre miembros del equipo -->
             <nav class="profile-pagination" aria-label="Navegación entre compañeros">
-                <a href="laura-blanco.html" class="hero-button hero-button--light">← Perfil anterior (Laura Blanco)</a>
+                <a href="laura-blanco.html" class="hero-button hero-button--light"><span class="icon" aria-hidden="true">←</span> Perfil anterior (Laura Blanco)</a>
                 <a href="laura-olivera.html" class="hero-button hero-button--light">Siguiente perfil (Laura Olivera)
-                    →</a>
+                    <span class="icon" aria-hidden="true">→</span></a>
             </nav>
 
         </div>
@@ -159,7 +160,7 @@
         </div>
     </footer>
 
-    <script src="js/perfil-christian.js"></script>
+    <script src="js/perfil-christian.js" defer></script>
 </body>
 
 </html>

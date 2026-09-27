@@ -51,11 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
       button.disabled = true;
     });
 
-    restartButton.hidden = false;
     restartButton.focus();
   }
 
   function checkItem(item, button, result) {
+    restartButton.hidden = false;
     button.disabled = true;
 
     if (item.bug) {
@@ -109,6 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
     found = 0;
     falsePositives = 0;
     feedback.textContent = 'Elegí un dato para revisarlo.';
+    // El reinicio aparece recién cuando se empieza a jugar
+    restartButton.hidden = true;
     renderSheet();
     updateStatus();
   }

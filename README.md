@@ -44,11 +44,11 @@ El sitio se compone de:
 
 | Nombre | GitHub | Página individual |
 |---|---|---|
-| Nicolás Zalazar | [@Nicoalazar](https://github.com/Nicoalazar) | `nicolas-zalazar.html` _(Sprint 2)_ |
-| Laura Belén Blanco | [@LauBelen](https://github.com/LauBelen) | `laura-blanco.html` _(Sprint 2)_ |
-| Christian Albornoz | [@albor77](https://github.com/albor77) | `christian-albornoz.html` _(Sprint 2)_ |
-| Laura Olivera | [@laura108814](https://github.com/laura108814) | `laura-olivera.html` _(Sprint 2)_ |
-| Fernando Guevara | [@Fer-505](https://github.com/Fer-505) | `fernando-guevara.html` _(Sprint 2)_ |
+| Nicolás Zalazar | [@Nicoalazar](https://github.com/Nicoalazar) | [`nicolas-zalazar.html`](nicolas-zalazar.html) |
+| Laura Belén Blanco | [@LauBelen](https://github.com/LauBelen) | [`laura-blanco.html`](laura-blanco.html) |
+| Christian Albornoz | [@albor77](https://github.com/albor77) | [`christian-albornoz.html`](christian-albornoz.html) |
+| Laura Olivera | [@laura108814](https://github.com/laura108814) | [`laura-olivera.html`](laura-olivera.html) |
+| Fernando Guevara | [@Fer-505](https://github.com/Fer-505) | [`fernando-guevara.html`](fernando-guevara.html) |
 
 ---
 
@@ -56,10 +56,10 @@ El sitio se compone de:
 
 | Rol | Responsable | Alcance |
 |---|---|---|
-| Portada (`index.html`) | No quedó registrado | Estructura, contenido y función JS de la portada |
+| Portada (`index.html`) | Laura Olivera | Estructura, contenido y función JS de la portada |
 | Paleta y tipografía | Laura Olivera | Definir colores, Google Fonts e iconografía; mantener `css/base.css` |
 | Template de perfil | No quedó registrado | Diseñar la estructura base que reutilizan todos los perfiles |
-| Bitácora y documentación | No quedó registrado | Mantener `bitacora.html` y el README actualizados por sprint |
+| Bitácora y documentación | Nicolás Zalazar | Mantener `bitacora.html` y el README actualizados por sprint |
 | Página individual | Cada integrante | Cada persona es dueña de su propio perfil y su función JS |
 
 **Canal de comunicación del equipo:** grupo de WhatsApp
@@ -282,27 +282,28 @@ Debe devolver un array vacío. Conviene incluir 412px en la prueba: es el ancho 
 
 ### Portada
 
-**Nombre de la interacción:** búsqueda y filtrado de integrantes
+**Función:** búsqueda y filtrado de integrantes
 **Archivo:** `js/portada.js`
-**Descripción:** filtra las tarjetas por nombre a medida que se escribe y muestra un mensaje cuando no hay coincidencias.
+**Qué hace:** filtra las tarjetas por nombre a medida que se escribe y muestra un mensaje cuando no hay coincidencias.
 **Por qué la elegimos:** permite encontrar rápidamente un perfil y aporta una interacción útil para una portada con varios integrantes.
 
 ![Captura del filtro de integrantes](img/capturas/portada-funcion.png)
 
 ### Perfil — Nicolás Zalazar
 
-**Nombre de la interacción:** Comparador de gustos
+**Función:** Comparador de gustos
 **Archivo:** `js/perfil-nicolas.js`
 **Qué hace:** muestra mis películas y discos favoritos de a una tarjeta por vez; el visitante responde "Me gusta" o "No es lo mío" en cada una y, al terminar el mazo, la página calcula el porcentaje de coincidencia con una barra de progreso y un mensaje que cambia según el nivel de compatibilidad. Incluye un botón para reiniciar el recorrido.
+**Por qué la elegí:** una lista de favoritos se lee y se olvida; convertirla en una comparación hace que el visitante se detenga en cada película y disco, y le da un resultado propio al final.
 
 ![Captura](img/capturas/perfil-nicolas.png)
 
 ### Perfil — Laura Belén Blanco
 
-**Función:**  Encontrá el bug
-**Archivo:** js/perfil-laura-blanco.js
+**Función:** Encontrá el bug
+**Archivo:** `js/perfil-laura-blanco.js`
 **Qué hace:** muestra una ficha con datos de mi perfil donde cuatro tienen errores a propósito (un nombre mal escrito, un director equivocado, un año invertido y un precio negativo). El visitante hace clic en los datos que cree incorrectos: si es un bug, se tacha y se explica el error; si no, cuenta como falso positivo. Al encontrar los cuatro bugs se muestra un resumen y se puede volver a jugar.
-Por qué la elegí: trabajo como QA Tester y quise mostrar en qué consiste ese trabajo con una interacción simple.
+**Por qué la elegí:** trabajo como QA Tester y quise mostrar en qué consiste ese trabajo con una interacción simple.
 
 ![Captura de la actividad Encontrá el bug de Laura Blanco](img/capturas/perfil-laura-blanco.png)
 
@@ -311,6 +312,7 @@ Por qué la elegí: trabajo como QA Tester y quise mostrar en qué consiste ese 
 **Función:** Espacio cinéfilo: citas y trivia
 **Archivo:** `js/perfil-christian.js`
 **Qué hace:** el visitante elige *Forrest Gump*, *Big Fish* o *Flores de Fuego (Hana-bi)*. La actividad escribe una cita de la película letra por letra y propone una pregunta con tres respuestas; por ejemplo, pregunta por el año y protagonista de *Forrest Gump*, quién dirigió *Big Fish* o el premio de *Hana-bi*. Al responder, desactiva las tres opciones y señala si la respuesta fue correcta. Elegir otra película o pulsar «Volver a intentar» limpia el feedback y vuelve a habilitar una pregunta.
+**Por qué la elegí:** el cine es uno de mis intereses principales y quise compartir películas que me marcaron de una forma activa: la cita escrita en tiempo real presenta cada película y la trivia invita al visitante a poner a prueba lo que sabe de ella.
 
 ![Captura de la trivia cinéfila de Christian](img/capturas/perfil-christian.png)
 
@@ -318,8 +320,8 @@ Por qué la elegí: trabajo como QA Tester y quise mostrar en qué consiste ese 
 
 **Función:** test de resolución bajo presión
 **Archivo:** `js/perfil-laura-olivera.js`
-**Descripción de la interacción:** presenta tres situaciones: una falla antes de una entrega, una tarea urgente poco clara y un cambio que rompe el proyecto. Cada una ofrece tres respuestas que otorgan 3, 2 o 1 punto. La barra y el indicador muestran el avance; al responder la tercera pregunta, el puntaje total define el resultado: estratega (8–9), colaborativo (5–7) o resolutivo (3–4). «Volver a intentar» oculta el resultado, reinicia el puntaje y vuelve a la primera situación.
-**Propósito:** relacionar decisiones ante problemas urgentes con distintos enfoques de resolución y colaboración.
+**Qué hace:** presenta tres situaciones: una falla antes de una entrega, una tarea urgente poco clara y un cambio que rompe el proyecto. Cada una ofrece tres respuestas que otorgan 3, 2 o 1 punto. La barra y el indicador muestran el avance; al responder la tercera pregunta, el puntaje total define el resultado: estratega (8–9), colaborativo (5–7) o resolutivo (3–4), que reemplaza a la pregunta en una tarjeta con el nombre del perfil, su descripción y el puntaje obtenido. «Volver a intentar» oculta el resultado, reinicia el puntaje y vuelve a la primera situación.
+**Por qué la elegí:** relacionar decisiones ante problemas urgentes con distintos enfoques de resolución y colaboración.
 
 ![Captura](img/capturas/perfil-laura-olivera.png)
 
@@ -328,7 +330,7 @@ Por qué la elegí: trabajo como QA Tester y quise mostrar en qué consiste ese 
 **Función:** foto interactiva, fichas de discos y rincón musical
 **Archivo:** `js/perfil-fer.js`
 **Qué hace:** reúne tres controles. Al activar la foto con clic, Enter o Espacio, gira y alterna entre el retrato y un saludo. En la lista, los discos «Harvest Moon», «Reveal» y «Guess Who» despliegan u ocultan una nota personal; también responden a Enter y Espacio. En el rincón musical, los botones de esos tres discos actualizan el dato curioso mostrado y señalan cuál está seleccionado.
-**Propósito:** presentar los gustos musicales de Fernando junto con notas personales y datos breves sobre cada disco.
+**Por qué la elegí:** presentar mis gustos musicales junto con notas personales y datos breves sobre cada disco.
 
 ![Captura](img/capturas/perfil-fernando.png)
 
@@ -355,16 +357,18 @@ Registra, por sprint, las decisiones tomadas, los problemas encontrados y cómo 
 
 | Herramienta | Modelo | Plan | Experiencia previa del equipo |
 |---|---|---|---|
-| Claude Code | Claude Opus 5 | Pago (plan Premium; nombre comercial exacto no registrado) | Uso frecuente antes de este TP |
-| Gemini | Gemini (versión exacta no identificada) | Gratuito | Uso frecuente antes de este TP |
+| Claude Code | Claude Opus 5 y Claude Opus 5.5 | Pago | Uso frecuente antes de este TP |
+| Gemini | Gemini 2.5 Flash / Web | Gratuito | Uso frecuente antes de este TP |
 | GitHub Copilot Chat | Modelo asignado a esta sesión; identificador no registrado | Free | Usado en la revisión del Sprint 4; experiencia previa específica no registrada |
+| Claude (chat en claude.ai) | Claude Opus 5.5 | [Pago] | Uso frecuente en el trabajo como QA y en la facultad |
 
 ### En qué asistió
 
 - **Planificación y documentación:** Claude Code ayudó a generar el plan de sprints (`docs/release-plan.md`) y el esqueleto inicial del README a partir de la consigna; el equipo revisó y ajustó esos documentos.
 - **Código y diseño:** Claude Code asistió en parte del carrusel de `js/portada.js` y en interacciones JavaScript de los perfiles.
 - **Imágenes:** Gemini generó los cinco avatares a partir de imágenes adjuntas. Prompt informado por el equipo: «contruye un avatar en base a la imagen adjuntada».
-- **Debugging y QA:** no se registró una consulta concreta de debugging a Claude Code o Gemini. Para el cierre del Sprint 4, GitHub Copilot asistió esta revisión del navegador, las interacciones y los errores de consola en las siete páginas; no se encontraron errores JS.
+- **Debugging y QA:** GitHub Copilot asistió la auditoría del navegador del 25/09: interacciones y errores de consola en las siete páginas, sin errores JS. En la revisión cruzada del 26/09, Claude Code se usó para auditar el Sprint 4 contra el plan, buscar la causa de los bugs encontrados y verificar las correcciones en el navegador en 400, 412, 900 y 1200px. Los casos concretos están en la sección siguiente.
+- **Perfil y QA de Laura Blanco:** Laura usó Claude (chat en claude.ai) para armar la estructura de su perfil a partir de los perfiles ya hechos, programar «Encontrá el bug», recortar y optimizar su avatar para web, guiar el flujo de Git (ramas, commits y Pull Requests) y apoyar la revisión cruzada del perfil de Fernando. Laura eligió los datos, la idea del juego y qué hallazgos corregir y cuáles reportar, y probó cada cambio en el navegador antes de subirlo.
 
 ### Imágenes y avatares generados con IA
 
@@ -378,6 +382,15 @@ El equipo eligió qué diseños de avatar correspondían a cada perfil y adaptó
 
 En el código, el equipo no dejó fija la profundidad del carrusel: la trasladó al token CSS `--carousel-depth` y `js/portada.js` lee ese valor para que responda a los breakpoints. Las interacciones de perfil se integraron a sus controles y contenidos concretos; el equipo comprobó sus estados en navegador. Para esta revisión se probaron las cinco actividades y se corrigió el reinicio y la visibilidad de controles.
 
+Tres casos de la revisión cruzada del 26/09 muestran cómo se repartió el trabajo entre el equipo y la IA:
+
+- **El bug lo encontramos nosotros; la IA encontró la causa.** Nicolás detectó que los botones claros desaparecían al pasar el mouse. Claude Code rastreó el problema hasta `--color-surface`: la variable había sido clara con la primera paleta y quedó azul noche con el diseño 2. El equipo validó la corrección en el navegador y pidió que el bug quedara registrado en la bitácora, cosa que la IA no había hecho por su cuenta.
+- **La IA detectó una regresión y el equipo decidió cómo resolverla.** Al revisar el commit del reinicio de la trivia, Claude Code notó que se había hecho sobre una versión vieja del perfil de Christian y que había deshecho mejoras del Sprint 3 (dimensiones de imágenes, íconos accesibles, `defer`). El equipo decidió restaurarlas conservando la lógica nueva del reinicio, en lugar de revertir el commit entero
+**Refactorización y control de selectores en la trivia cinéfila:** Durante la asistencia para el reinicio de la trivia de Christian, la IA propuso selectores genéricos (`.cinema-btn`) que capturaban erróneamente tanto los botones de película como el nuevo botón de reinicio. Christian identificó el conflicto de ámbito, acotó la selección en JavaScript estrictamente a `.cinema-selector .cinema-btn`, reemplazó la manipulación directa de estilos inline (`style.display`) por el atributo semántico `hidden`, y delegó el espaciado a clases utilitarias en `css/perfil.css`..
+- **No reescribimos la historia.** La entrada del Sprint 1 de la bitácora describe una paleta amarilla que ya no se usa. Antes de tocarla revisamos el historial de `css/base.css` y confirmamos que esa paleta existió de verdad, como primera propuesta, antes del diseño 2. Por eso la dejamos como estaba y agregamos una aclaración: la bitácora tiene que reflejar lo que pasó en su fecha.
+
+En los tres casos, la IA propuso cambios y el equipo los revisó antes de incorporarlos. Ningún commit lo hizo la IA: los commits los hizo cada integrante.
+
 ### Criterio de privacidad
 
 Los avatares se generaron enviando imágenes adjuntas a Gemini; por eso no se afirma que las imágenes de origen permanecieran solo en el equipo. El sitio muestra los datos de perfil publicados por sus integrantes y no incluye domicilios ni teléfonos. No se registraron las opciones de retención o privacidad seleccionadas en Gemini.
@@ -386,4 +399,12 @@ Los avatares se generaron enviando imágenes adjuntas a Gemini; por eso no se af
 
 ## 12. Evolución del proyecto
 
-Al 25/09/2026 no hay una ampliación posterior aprobada por el equipo. La evolución para próximos TPs se definirá después de la entrega, tomando como base las observaciones de navegación y el uso de las interacciones.
+<!-- BORRADOR: propuesta a validar por el equipo antes de la entrega -->
+
+Estas son las líneas que el equipo propone ampliar en los próximos TPs. Cada una parte de un límite concreto que encontramos en este sitio:
+
+- **Generar los perfiles desde datos.** Hoy los cinco perfiles repiten el mismo HTML y cualquier cambio en el template hay que hacerlo cinco veces (lo vivimos al alinear el perfil de Fernando). La idea es guardar los datos de cada integrante en un JSON y armar las páginas con JavaScript a partir de ese archivo.
+- **Componentes compartidos.** El header, el footer y la paginación entre compañeros están copiados en las siete páginas. Queremos extraerlos a un único lugar para que un enlace se corrija una sola vez.
+- **Persistir el estado de las interacciones.** Guardar en `localStorage` el resultado del comparador de gustos, la trivia y el test, para que el visitante vea su puntaje anterior al volver.
+- **Pruebas automatizadas.** Convertir la verificación de overflow y de errores de consola que hicimos a mano en los Sprints 3 y 4 en un script que corra antes de cada merge.
+- **Modo claro.** La paleta ya está tokenizada en `:root`, así que agregar un tema claro con `prefers-color-scheme` no requiere tocar los componentes.

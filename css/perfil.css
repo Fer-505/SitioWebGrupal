@@ -63,18 +63,22 @@
     color: var(--color-primary);
 }
 
-/* Reverso de la foto de Fernando: lo inyecta js/perfil-fer.js */
+/* Reverso de la foto de Fernando: lo inyecta js/perfil-fer.js.
+   Mismo tamaño y forma que la foto: sin medida fija, el texto en una línea
+   ensanchaba la columna del avatar y la tarjeta duplicaba su alto entre 412
+   y 600px. En mobile la foto baja a 5.5rem, pero ahí el encabezado se apila
+   y el reverso puede quedarse en 8rem para que el texto entre. */
 .profile-photo-flip-message {
-    width: 100%;
-    height: 100%;
-    min-height: 7.5rem;
+    width: max(var(--profile-photo-size), 8rem);
+    height: max(var(--profile-photo-size), 8rem);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 1.25rem;
-    font-size: var(--fs-sm);
-    border-radius: var(--radius);
+    padding: var(--space-md);
+    font-size: var(--fs-xs);
+    line-height: 1.3;
+    border-radius: 50%;
     background-color: var(--color-surface);
     color: var(--color-accent);
     border: 2px solid var(--color-accent);
@@ -177,6 +181,7 @@
 /* Paneles translúcidos sobre el fondo del widget */
 .cinema-display-area,
 .test-question,
+.test-result,
 .taste-card,
 .taste-result-area,
 .music-display-area,
@@ -188,6 +193,7 @@
 
 .cinema-display-area,
 .test-question,
+.test-result,
 .taste-result-area,
 .music-display-area {
     padding: var(--space-lg);
@@ -373,11 +379,29 @@
     border-color: var(--color-accent);
 }
 
-.test-result {
-    margin: var(--space-lg) 0;
+/* Ocupa el lugar de .test-question al terminar: misma caja, contenido de resultado */
+.test-result h3 {
     color: var(--color-accent);
+    margin: var(--space-xs) 0 var(--space-sm);
+}
+
+.test-result p {
+    color: var(--color-on-dark);
     font-size: var(--fs-md);
+    margin: 0;
+}
+
+/* .test-result p le gana a .eyebrow en especificidad: se repiten sus valores */
+.test-result .eyebrow {
+    color: var(--color-muted-on-dark);
+    font-size: var(--fs-xs);
+}
+
+.test-result .test-score {
+    color: var(--color-muted-on-dark);
+    font-size: var(--fs-sm);
     font-weight: 700;
+    margin-top: var(--space-md);
 }
 
 /* --- Comparador de gustos (Nicolás Zalazar) ------------------------------ */
@@ -584,11 +608,6 @@
     color: var(--color-on-dark);
 }
 
-/* hero-button define display: inline-block y pisa el atributo hidden */
-.bug-hunt [hidden] {
-    display: none;
-}
-
 /* 6. MEDIA QUERIES =========================================================
    Breakpoints obligatorios del plan de sprints: 900px y 400px. El de 1200px
    no afecta a esta vista, que a ese ancho ya entra sin ajustes.             */
@@ -629,6 +648,12 @@
         text-align: center;
     }
 
+    /* El h1 global tiene max-width: 10ch: sin margen automático, su caja
+       quedaba a la izquierda aunque el texto estuviera centrado */
+    .profile-header-card h1 {
+        margin-inline: auto;
+    }
+
     .profile-meta {
         flex-direction: column;
         gap: var(--space-xs);
@@ -660,4 +685,17 @@
     .taste-card {
         padding: var(--space-md);
     }
+}
+
+/* Pista visible para el giro de la foto de Fernando (revisión cruzada Sprint 4) */
+.profile-avatar-container--hint {
+    flex-direction: column;
+}
+
+.profile-photo-hint {
+    max-width: var(--profile-photo-size);
+    margin: var(--space-sm) 0 0;
+    color: var(--color-muted-on-dark);
+    font-size: var(--fs-xs);
+    text-align: center;
 }
