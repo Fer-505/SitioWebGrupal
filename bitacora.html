@@ -140,6 +140,29 @@
             separado.
           </li>
         </ul>
+
+        <h3>Lo que Laura Blanco reportó en el perfil de Fernando</h3>
+        <ul>
+          <li>
+            <strong>El giro de la foto deformaba el encabezado.</strong> Al medirlo resultó más grave que lo
+            reportado: entre 412 y 600px, la tarjeta del encabezado pasaba de 578 a 1207px de alto. El reverso
+            (<code>.profile-photo-flip-message</code>) no tenía tamaño fijo, así que medía lo que el texto en una
+            sola línea (351px), ensanchaba la columna del avatar y aplastaba la del nombre. Ahora el reverso es
+            un círculo del mismo tamaño que la foto, con el texto en <code>--fs-xs</code>. El alto de la tarjeta
+            ya no cambia al girar en ningún ancho.
+          </li>
+          <li>
+            <strong>El nombre quedaba corrido a la izquierda en mobile.</strong> El <code>h1</code> global tiene
+            <code>max-width: 10ch</code>: en 400px el texto estaba centrado, pero su caja quedaba pegada a la
+            izquierda, 14px fuera del centro. Agregamos <code>margin-inline: auto</code> al <code>h1</code> del
+            encabezado de perfil, solo en el breakpoint de 400px, donde el encabezado se apila. Corrige los cinco
+            perfiles.
+          </li>
+          <li>
+            Quedan para Fernando los otros dos puntos del reporte: los signos y la tilde del mensaje de la foto
+            (es su texto) y el indicador y <code>role="button"</code> de los discos desplegables.
+          </li>
+        </ul>
       </article>
 
       <article class="bitacora-entry">
