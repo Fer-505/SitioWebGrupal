@@ -270,15 +270,27 @@ code {
   color: var(--color-muted-on-dark);
 }
 
+/* Se usa en enlaces <a> y en <button>: border, cursor y font anulan los
+   estilos que el navegador le pone a <button> (Arial 13px, borde en relieve). */
 .hero-button {
   background: var(--color-accent);
+  border: 0;
   border-radius: var(--radius-pill);
   color: var(--color-primary);
+  cursor: pointer;
   display: inline-block;
+  /* font va antes de font-weight: el atajo resetea el peso */
+  font: inherit;
   font-weight: 700;
   margin-top: var(--space-md);
   padding: var(--pad-control);
   text-decoration: none;
+}
+
+/* display: inline-block le gana al atributo hidden: sin esto los reinicios
+   que arrancan ocultos se ven desde el principio */
+.hero-button[hidden] {
+  display: none;
 }
 
 .hero-button--light {
