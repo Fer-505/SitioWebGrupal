@@ -358,7 +358,7 @@ Registra, por sprint, las decisiones tomadas, los problemas encontrados y cómo 
 | Herramienta | Modelo | Plan | Experiencia previa del equipo |
 |---|---|---|---|
 | Claude Code | Claude Opus 5 y Claude Opus 5.5 | Pago | Uso frecuente antes de este TP |
-| Gemini | Gemini (versión exacta no identificada) | Gratuito | Uso frecuente antes de este TP |
+| Gemini | Gemini 2.5 Flash / Web | Gratuito | Uso frecuente antes de este TP |
 | GitHub Copilot Chat | Modelo asignado a esta sesión; identificador no registrado | Free | Usado en la revisión del Sprint 4; experiencia previa específica no registrada |
 
 ### En qué asistió
@@ -383,7 +383,8 @@ En el código, el equipo no dejó fija la profundidad del carrusel: la trasladó
 Tres casos de la revisión cruzada del 26/09 muestran cómo se repartió el trabajo entre el equipo y la IA:
 
 - **El bug lo encontramos nosotros; la IA encontró la causa.** Nicolás detectó que los botones claros desaparecían al pasar el mouse. Claude Code rastreó el problema hasta `--color-surface`: la variable había sido clara con la primera paleta y quedó azul noche con el diseño 2. El equipo validó la corrección en el navegador y pidió que el bug quedara registrado en la bitácora, cosa que la IA no había hecho por su cuenta.
-- **La IA detectó una regresión y el equipo decidió cómo resolverla.** Al revisar el commit del reinicio de la trivia, Claude Code notó que se había hecho sobre una versión vieja del perfil de Christian y que había deshecho mejoras del Sprint 3 (dimensiones de imágenes, íconos accesibles, `defer`). El equipo decidió restaurarlas conservando la lógica nueva del reinicio, en lugar de revertir el commit entero.
+- **La IA detectó una regresión y el equipo decidió cómo resolverla.** Al revisar el commit del reinicio de la trivia, Claude Code notó que se había hecho sobre una versión vieja del perfil de Christian y que había deshecho mejoras del Sprint 3 (dimensiones de imágenes, íconos accesibles, `defer`). El equipo decidió restaurarlas conservando la lógica nueva del reinicio, en lugar de revertir el commit entero
+**Refactorización y control de selectores en la trivia cinéfila:** Durante la asistencia para el reinicio de la trivia de Christian, la IA propuso selectores genéricos (`.cinema-btn`) que capturaban erróneamente tanto los botones de película como el nuevo botón de reinicio. Christian identificó el conflicto de ámbito, acotó la selección en JavaScript estrictamente a `.cinema-selector .cinema-btn`, reemplazó la manipulación directa de estilos inline (`style.display`) por el atributo semántico `hidden`, y delegó el espaciado a clases utilitarias en `css/perfil.css`..
 - **No reescribimos la historia.** La entrada del Sprint 1 de la bitácora describe una paleta amarilla que ya no se usa. Antes de tocarla revisamos el historial de `css/base.css` y confirmamos que esa paleta existió de verdad, como primera propuesta, antes del diseño 2. Por eso la dejamos como estaba y agregamos una aclaración: la bitácora tiene que reflejar lo que pasó en su fecha.
 
 En los tres casos, la IA propuso cambios y el equipo los revisó antes de incorporarlos. Ningún commit lo hizo la IA: los commits los hizo cada integrante.
