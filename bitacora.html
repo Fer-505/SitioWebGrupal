@@ -56,6 +56,62 @@
 
       <article class="bitacora-entry">
         <time datetime="2026-09-27">27 de septiembre de 2026</time>
+        <h2>Sprint 4 — Revisión cruzada de Laura Blanco sobre el perfil de Fernando</h2>
+
+        <h3>Cómo lo revisé</h3>
+        <ul>
+          <li>
+            Entré desde la portada y recorrí <code>fernando-guevara.html</code> sin usar el botón Atrás, con la
+            consola abierta (0 errores de JS). Lo probé en 400, 900 y 1200px: sin desborde horizontal y con
+            todos los enlaces funcionando.
+          </li>
+          <li>
+            Probé las tres interacciones con mouse y con teclado: los discos que se expanden, el «Rincón Musical»
+            y el giro de la foto. Las tres funcionan.
+          </li>
+        </ul>
+
+        <h3>Lo que corregí</h3>
+        <ul>
+          <li>
+            <strong>Títulos distintos al resto de los perfiles.</strong> Fernando usaba «Habilidades»,
+            «Películas favoritas» y «Discos favoritos», mientras que los otros cuatro perfiles usan
+            «Habilidades Clave», «Películas Favoritas» y «Discos Favoritos». Los unifiqué para que la maquetación
+            sea uniforme.
+          </li>
+          <li>
+            <strong>El giro de la foto no se descubría.</strong> La única pista era un tooltip que aparece al
+            pasar el mouse, así que en celular nadie podía enterarse de que la foto se da vuelta. Agregué debajo
+            del avatar el texto «Tocá la foto para darla vuelta», con la clase
+            <code>.profile-avatar-container--hint</code> para que quede debajo de la foto sin cambiar los demás
+            perfiles.
+          </li>
+        </ul>
+
+        <h3>Lo que reporté sin corregir</h3>
+        <ul>
+          <li>
+            El mensaje de la foto dice «Pase nomás! Sientese…»: faltan los signos de apertura y la tilde de
+            «Siéntese». Lo dejé para que Fernando decida el texto.
+          </li>
+          <li>
+            Al girar la foto, el avatar circular se convierte en un rectángulo y en celular empuja el contenido
+            hacia abajo.
+          </li>
+          <li>
+            Los discos que se expanden no muestran ningún ícono que indique que se pueden abrir, y les falta
+            <code>role="button"</code> para que un lector de pantalla los anuncie como desplegables.
+          </li>
+          <li>
+            General para todos los perfiles: en 400px el nombre queda corrido a la izquierda, porque el
+            <code>h1</code> tiene <code>max-width: 10ch</code> sin margen automático. Como es CSS compartido,
+            lo comenté en el grupo antes de tocarlo.
+          </li>
+        </ul>
+      </article>
+
+      <article class="bitacora-entry">
+        <time datetime="2026-09-27">27 de septiembre de 2026</time>
         <h2>Sprint 4 — Correcciones de lo reportado en la revisión cruzada</h2>
 
         <p>

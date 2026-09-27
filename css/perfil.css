@@ -686,3 +686,16 @@
         padding: var(--space-md);
     }
 }
+
+/* Pista visible para el giro de la foto de Fernando (revisión cruzada Sprint 4) */
+.profile-avatar-container--hint {
+    flex-direction: column;
+}
+
+.profile-photo-hint {
+    max-width: var(--profile-photo-size);
+    margin: var(--space-sm) 0 0;
+    color: var(--color-muted-on-dark);
+    font-size: var(--fs-xs);
+    text-align: center;
+}
