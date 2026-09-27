@@ -3,7 +3,7 @@
 > **TP1 · Desarrollo de Sistemas Web · Front End · 2026 2C**
 > Sitio web grupal con portada, perfiles individuales, navegación interna y bitácora de desarrollo.
 
-🔗 **Publicación:** prevista en Vercel para Sprint 5 (26/09/2026); aún no publicada al 25/09/2026.
+🔗 **Publicación:** https://sitio-web-grupal.vercel.app/
 📋 **Tablero de tareas:** [GitHub Project](https://github.com/Nicoalazar/SitioWebGrupal/projects) · [Issues](https://github.com/Nicoalazar/SitioWebGrupal/issues)
 🗺️ **Plan de trabajo:** [docs/release-plan.md](docs/release-plan.md)
 
@@ -348,9 +348,9 @@ Registra, por sprint, las decisiones tomadas, los problemas encontrados y cómo 
 
 ## 10. Publicación en Vercel
 
-**Estado:** no publicado al 25/09/2026. El plan del equipo programa el deploy en Vercel para el Sprint 5 (26/09/2026).
+**Estado:** publicado en Vercel el 27/09/2026. 
 
-**URL:** todavía no disponible. Cuando se publique, agregar aquí la URL de producción y probar los enlaces y breakpoints del sitio publicado.
+**URL:** https://sitio-web-grupal.vercel.app/
 
 ---
 
