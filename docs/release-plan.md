@@ -135,30 +135,30 @@ Repetir por cada uno de los 5 integrantes (una tarea/issue por perfil):
 ## Sprint 5 — Deploy y checklist de entrega final · **Sáb 26/09**
 **Dependencia:** Sprint 4 cerrado.
 
-- [ ] Deploy en Vercel
-- [ ] Probar el sitio publicado (no solo local) en los 3 breakpoints
-- [ ] Agregar la URL de Vercel al README
-- [ ] Confirmar que el repositorio es **público**
-- [ ] Confirmar que el README está completo y es el punto de partida real para navegar el proyecto
-- [ ] Revisar historial de commits: ¿se ve participación distribuida en el tiempo de todo el equipo, o un dump de último día? Si es lo segundo, todavía hay tiempo de que cada integrante haga commits reales de ajustes menores
+- [x] Deploy en Vercel
+- [x] Probar el sitio publicado (no solo local) en los 3 breakpoints
+- [x] Agregar la URL de Vercel al README
+- [x] Confirmar que el repositorio es **público**
+- [x] Confirmar que el README está completo y es el punto de partida real para navegar el proyecto
+- [x] Revisar historial de commits: ¿se ve participación distribuida en el tiempo de todo el equipo, o un dump de último día? Si es lo segundo, todavía hay tiempo de que cada integrante haga commits reales de ajustes menores
 - [ ] Cargar el enlace del repositorio en la planilla única de entregas
 
 **Checklist final antes de entregar (repasar los 10 ítems de la rúbrica uno por uno):**
-- [ ] Repo público + Vercel + README documentado
-- [ ] Navegación sin dependencia del botón Atrás, probada en las 7 páginas
-- [ ] Portada con nombre, propósito e integrantes con links funcionales
-- [ ] Los 5 perfiles con estructura idéntica y datos completos
-- [ ] Responsive probado en 400/900/1200px sin errores
-- [ ] CSS organizado, Google Fonts y paleta consistente
-- [ ] JS sin errores de consola, una función distinta por perfil + una en portada
-- [ ] Bitácora con entradas reales fechadas por sprint
-- [ ] README sin secciones vacías
-- [ ] Sección de uso de IA con ejemplos concretos de qué se revisó con criterio propio
+- [x] Repo público + Vercel + README documentado
+- [x] Navegación sin dependencia del botón Atrás, probada en las 7 páginas
+- [x] Portada con nombre, propósito e integrantes con links funcionales
+- [x] Los 5 perfiles con estructura idéntica y datos completos
+- [x] Responsive probado en 400/900/1200px sin errores
+- [x] CSS organizado, Google Fonts y paleta consistente
+- [x] JS sin errores de consola, una función distinta por perfil + una en portada
+- [x] Bitácora con entradas reales fechadas por sprint
+- [x] README sin secciones vacías
+- [x] Sección de uso de IA con ejemplos concretos de qué se revisó con criterio propio
 
 ---
 
 ## Tareas transversales (repetir en cada sprint, no dejar para el final)
 
-- [ ] Actualizar bitácora con la entrada del sprint recién cerrado
-- [ ] Completar en README las secciones que ese sprint haya generado contenido nuevo
+- [x] Actualizar bitácora con la entrada del sprint recién cerrado
+- [x] Completar en README las secciones que ese sprint haya generado contenido nuevo
 - [ ] Cada integrante hace al menos un commit propio por sprint

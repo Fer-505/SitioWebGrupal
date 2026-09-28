@@ -59,6 +59,69 @@
 
       <article class="bitacora-entry">
         <time datetime="2026-09-27">27 de septiembre de 2026</time>
+        <h2>Sprint 5 — Publicación en Vercel y checklist de entrega</h2>
+
+        <h3>Publicación</h3>
+        <ul>
+          <li>
+            Publicamos el sitio en <a href="https://sitio-web-grupal.vercel.app/">sitio-web-grupal.vercel.app</a>
+            y Fernando agregó la URL al README. Como es HTML, CSS y JavaScript sin dependencias, Vercel lo sirve
+            sin paso de build.
+          </li>
+          <li>
+            Decidimos que la rama publicada sea <code>main</code>, con la versión final. <code>development</code>
+            sigue siendo la rama de integración de los sprints; cuando el trabajo está cerrado y revisado, pasa a
+            <code>main</code> por Pull Request y recién ahí se publica. Así lo que está online es siempre una
+            versión terminada, como dicen las convenciones del README.
+          </li>
+        </ul>
+
+        <h3>Dificultades</h3>
+        <ul>
+          <li>
+            <strong>El sitio publicado no tenía los últimos cambios.</strong> Al probarlo, el comparador de gustos
+            todavía mostraba el mazo junto al resultado y los favicon daban 404. El arreglo de
+            <code>hidden</code>, el favicon y las capturas nuevas estaban en la rama del Sprint 5 y todavía no
+            habían pasado a la rama publicada. Llegan a <code>development</code> con el PR #34, que incluye esta
+            entrada, y a <code>main</code> con el PR #33.
+          </li>
+          <li>
+            <strong>Un commit que nunca se subió.</strong> El orden de la bitácora del 27/09 (la entrada propia
+            para las correcciones del reporte de Laura Blanco y la revisión de persona y tiempos verbales) quedó
+            en un commit local sin pushear, y el PR del Sprint 4 se mergeó sin él. Lo recuperamos en la rama del
+            Sprint 5. Aprendizaje: antes de mergear un PR, comprobar con <code>git status</code> que la rama no
+            tenga commits sin subir.
+          </li>
+        </ul>
+
+        <h3>Cómo lo verificamos</h3>
+        <ul>
+          <li>
+            Sobre el sitio publicado (no el local) recorrimos las siete páginas en 400, 900 y 1200px: las 21
+            combinaciones dieron sin desborde horizontal, sin imágenes rotas y sin errores de consola, y los
+            enlaces internos respondieron todos.
+          </li>
+          <li>
+            Probamos las seis interacciones publicadas: el buscador y el carrusel de la portada, el comparador de
+            gustos, «Encontrá el bug», la trivia de cine, el test bajo presión y el Rincón Musical con el giro de
+            la foto.
+          </li>
+          <li>
+            Repasamos el checklist de la rúbrica del plan de sprints ítem por ítem. Entre otras cosas,
+            confirmamos que los cinco perfiles tienen cuatro habilidades, tres películas, tres discos, ciudad,
+            edad, foto y su propia interacción, y que la portada enlaza a los cinco.
+          </li>
+        </ul>
+
+        <h3>Próximos pasos</h3>
+        <ul>
+          <li>Mergear el PR #34 a <code>development</code> y después el PR #33 a <code>main</code>.</li>
+          <li>Cargar el enlace del repositorio en la planilla de entregas.</li>
+        </ul>
+      </article>
+
+      <article class="bitacora-entry">
+        <time datetime="2026-09-27">27 de septiembre de 2026</time>
         <h2>Sprint 4 — El atributo <code>hidden</code> no ocultaba</h2>
 
         <h3>Problema</h3>
@@ -91,7 +154,8 @@
             consola.
           </li>
           <li>
-            La captura del comparador en el README muestra el problema, así que hay que volver a sacarla.
+            La captura del comparador en el README mostraba el problema, así que la volvimos a sacar con el
+            arreglo aplicado.
           </li>
         </ul>
       </article>

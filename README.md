@@ -84,7 +84,7 @@ El sitio se compone de:
 
 ### Ramas
 
-- `main`: rama estable. Solo recibe cambios vía Pull Request.
+- `main`: rama estable con la versión final. Solo recibe cambios vía Pull Request y es la que se publica en Vercel (ver [sección 10](#10-publicación-en-vercel)).
 - `development`: rama de integración de los sprints. Solo recibe cambios vía Pull Request.
 - `feature/<nombre-tarea>` o `<n>-<slug-del-issue>`: una rama por tarea/issue. Ejemplo: `1-sprint-0-gobernanza-del-proyecto`.
 
@@ -348,9 +348,23 @@ Registra, por sprint, las decisiones tomadas, los problemas encontrados y cómo 
 
 ## 10. Publicación en Vercel
 
-**Estado:** publicado en Vercel el 27/09/2026. 
+**Estado:** publicado en Vercel el 27/09/2026.
 
 **URL:** https://sitio-web-grupal.vercel.app/
+
+### Cómo está configurado
+
+El sitio es HTML, CSS y JavaScript sin dependencias, así que Vercel lo sirve tal cual, sin paso de build:
+
+1. En Vercel: *Add New → Project* e importar el repositorio `Nicoalazar/SitioWebGrupal`.
+2. *Framework Preset:* **Other**. *Build Command:* vacío. *Output Directory:* la raíz del repositorio.
+3. *Settings → Git → Production Branch:* **`main`**.
+
+**Decisión del equipo: la rama publicada es `main`, con la versión final.** `development` es la rama de integración de los sprints; cuando el trabajo está cerrado y revisado, pasa a `main` con un Pull Request y recién ahí se publica. Así lo que está online es siempre una versión terminada, como indica el flujo de ramas de la [sección 5](#5-convenciones-de-trabajo).
+
+### Cómo verificar una publicación
+
+Después de cada merge, abrir el sitio publicado (no el local) y repetir la prueba de la [guía de estilos](#accesibilidad-y-responsive): las siete páginas en 400, 900 y 1200px, sin desborde horizontal ni errores de consola, con la navegación interna y las seis interacciones funcionando.
 
 ---
 
