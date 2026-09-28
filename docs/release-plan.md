@@ -116,7 +116,7 @@ Repetir por cada uno de los 5 integrantes (una tarea/issue por perfil):
 ## Sprint 4 — QA cruzado, Bitácora y README finales, documentación de IA · **Jue 24/09 → Vie 25/09**
 **Dependencia:** Sprints 1–3 cerrados funcionalmente.
 
-- [ ] Revisión cruzada completa: cada integrante navega el sitio como usuario nuevo, sin usar el botón Atrás, y reporta enlaces rotos o fricciones
+- [x] Revisión cruzada completa: cada integrante navega el sitio como usuario nuevo, sin usar el botón Atrás, y reporta enlaces rotos o fricciones
 - [x] Abrir consola del navegador en cada página y confirmar cero errores de JS
 - [x] Cerrar la Bitácora: revisar que tenga entradas fechadas y reales de cada sprint (no una sola entrada final) — decisiones, dificultades, cambios de rumbo
 - [x] Completar la sección de uso de IA en el README:
@@ -126,7 +126,7 @@ Repetir por cada uno de los 5 integrantes (una tarea/issue por perfil):
   - [x] Si se generaron avatares/imágenes con IA: modelo usado y criterio de los prompts
   - [x] Qué se revisó, adaptó o cambió con criterio propio antes de incorporar resultados generados — esta es la parte que separa "Propone" de "Supera" en este ítem, no la saltees
 - [x] Completar README: capturas de pantalla de cada función JS, estructura de archivos final, guía de estilos con hex reales
-- [ ] Sección "evolución" en el README: qué se planea ampliar en próximos TPs
+- [x] Sección "evolución" en el README: qué se planea ampliar en próximos TPs
 
 **Acceptance criteria:** README completo sin placeholders, bitácora con mínimo una entrada real por sprint, sección de IA con ejemplos concretos (no genérica tipo "usamos ChatGPT para ayudar con el código").
 
@@ -135,30 +135,30 @@ Repetir por cada uno de los 5 integrantes (una tarea/issue por perfil):
 ## Sprint 5 — Deploy y checklist de entrega final · **Sáb 26/09**
 **Dependencia:** Sprint 4 cerrado.
 
-- [ ] Deploy en Vercel
-- [ ] Probar el sitio publicado (no solo local) en los 3 breakpoints
-- [ ] Agregar la URL de Vercel al README
-- [ ] Confirmar que el repositorio es **público**
-- [ ] Confirmar que el README está completo y es el punto de partida real para navegar el proyecto
-- [ ] Revisar historial de commits: ¿se ve participación distribuida en el tiempo de todo el equipo, o un dump de último día? Si es lo segundo, todavía hay tiempo de que cada integrante haga commits reales de ajustes menores
+- [x] Deploy en Vercel
+- [x] Probar el sitio publicado (no solo local) en los 3 breakpoints
+- [x] Agregar la URL de Vercel al README
+- [x] Confirmar que el repositorio es **público**
+- [x] Confirmar que el README está completo y es el punto de partida real para navegar el proyecto
+- [x] Revisar historial de commits: ¿se ve participación distribuida en el tiempo de todo el equipo, o un dump de último día? Si es lo segundo, todavía hay tiempo de que cada integrante haga commits reales de ajustes menores
 - [ ] Cargar el enlace del repositorio en la planilla única de entregas
 
 **Checklist final antes de entregar (repasar los 10 ítems de la rúbrica uno por uno):**
-- [ ] Repo público + Vercel + README documentado
-- [ ] Navegación sin dependencia del botón Atrás, probada en las 7 páginas
-- [ ] Portada con nombre, propósito e integrantes con links funcionales
-- [ ] Los 5 perfiles con estructura idéntica y datos completos
-- [ ] Responsive probado en 400/900/1200px sin errores
-- [ ] CSS organizado, Google Fonts y paleta consistente
-- [ ] JS sin errores de consola, una función distinta por perfil + una en portada
-- [ ] Bitácora con entradas reales fechadas por sprint
-- [ ] README sin secciones vacías
-- [ ] Sección de uso de IA con ejemplos concretos de qué se revisó con criterio propio
+- [x] Repo público + Vercel + README documentado
+- [x] Navegación sin dependencia del botón Atrás, probada en las 7 páginas
+- [x] Portada con nombre, propósito e integrantes con links funcionales
+- [x] Los 5 perfiles con estructura idéntica y datos completos
+- [x] Responsive probado en 400/900/1200px sin errores
+- [x] CSS organizado, Google Fonts y paleta consistente
+- [x] JS sin errores de consola, una función distinta por perfil + una en portada
+- [x] Bitácora con entradas reales fechadas por sprint
+- [x] README sin secciones vacías
+- [x] Sección de uso de IA con ejemplos concretos de qué se revisó con criterio propio
 
 ---
 
 ## Tareas transversales (repetir en cada sprint, no dejar para el final)
 
-- [ ] Actualizar bitácora con la entrada del sprint recién cerrado
-- [ ] Completar en README las secciones que ese sprint haya generado contenido nuevo
+- [x] Actualizar bitácora con la entrada del sprint recién cerrado
+- [x] Completar en README las secciones que ese sprint haya generado contenido nuevo
 - [ ] Cada integrante hace al menos un commit propio por sprint

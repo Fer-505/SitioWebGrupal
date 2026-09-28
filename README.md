@@ -3,7 +3,7 @@
 > **TP1 · Desarrollo de Sistemas Web · Front End · 2026 2C**
 > Sitio web grupal con portada, perfiles individuales, navegación interna y bitácora de desarrollo.
 
-🔗 **Publicación:** prevista en Vercel para Sprint 5 (26/09/2026); aún no publicada al 25/09/2026.
+🔗 **Publicación:** https://sitio-web-grupal.vercel.app/
 📋 **Tablero de tareas:** [GitHub Project](https://github.com/Nicoalazar/SitioWebGrupal/projects) · [Issues](https://github.com/Nicoalazar/SitioWebGrupal/issues)
 🗺️ **Plan de trabajo:** [docs/release-plan.md](docs/release-plan.md)
 
@@ -58,12 +58,12 @@ El sitio se compone de:
 |---|---|---|
 | Portada (`index.html`) | Laura Olivera | Estructura, contenido y función JS de la portada |
 | Paleta y tipografía | Laura Olivera | Definir colores, Google Fonts e iconografía; mantener `css/base.css` |
-| Template de perfil | No quedó registrado | Diseñar la estructura base que reutilizan todos los perfiles |
-| Bitácora y documentación | Nicolás Zalazar | Mantener `bitacora.html` y el README actualizados por sprint |
+| Template de perfil | Laura Belén Blanco y Christian Albornoz | Diseñar la estructura base que reutilizan todos los perfiles |
+| Bitácora y documentación | Nicolás Zalazar y Fernando Guevara | Mantener `bitacora.html` y el README actualizados por sprint |
 | Página individual | Cada integrante | Cada persona es dueña de su propio perfil y su función JS |
 
 **Canal de comunicación del equipo:** grupo de WhatsApp
-**Frecuencia de sincronización:** no quedó registrada una cadencia fija.
+**Frecuencia de sincronización:** luego de cada sprint terminado.
 
 ---
 
@@ -84,8 +84,8 @@ El sitio se compone de:
 
 ### Ramas
 
-- `main`: rama estable. Solo recibe cambios vía Pull Request.
-- `development`: rama de integración de los sprints.
+- `main`: rama estable con la versión final. Solo recibe cambios vía Pull Request y es la que se publica en Vercel (ver [sección 10](#10-publicación-en-vercel)).
+- `development`: rama de integración de los sprints. Solo recibe cambios vía Pull Request.
 - `feature/<nombre-tarea>` o `<n>-<slug-del-issue>`: una rama por tarea/issue. Ejemplo: `1-sprint-0-gobernanza-del-proyecto`.
 
 Flujo: `feature/*` → PR hacia `development` → al cerrar un sprint, PR de `development` hacia `main`.
@@ -130,6 +130,7 @@ SitioWebGrupal/
 ├── christian-albornoz.html
 ├── laura-olivera.html
 ├── fernando-guevara.html
+├── favicon.ico                # Ícono de respaldo para navegadores sin soporte de SVG
 ├── css/
 │   ├── base.css               # Tokens (:root), reset, layout y componentes de portada
 │   ├── nav.css                # Cabecera y navegación, compartidas por las 7 páginas
@@ -143,7 +144,9 @@ SitioWebGrupal/
 │   └── perfil-fer.js
 ├── img/
 │   ├── perfiles/              # Fotos o avatares de los integrantes (Sprint 2)
-│   └── capturas/              # Evidencias de las funciones JavaScript
+│   ├── capturas/              # Evidencias de las funciones JavaScript
+│   ├── favicon.svg            # Ícono del sitio («15» con la paleta del hero)
+│   └── apple-touch-icon.png   # Ícono de 180 px para accesos directos en iOS
 ├── docs/
 │   └── release-plan.md        # Plan de sprints del equipo
 ├── .github/
@@ -296,7 +299,7 @@ Debe devolver un array vacío. Conviene incluir 412px en la prueba: es el ancho 
 **Qué hace:** muestra mis películas y discos favoritos de a una tarjeta por vez; el visitante responde "Me gusta" o "No es lo mío" en cada una y, al terminar el mazo, la página calcula el porcentaje de coincidencia con una barra de progreso y un mensaje que cambia según el nivel de compatibilidad. Incluye un botón para reiniciar el recorrido.
 **Por qué la elegí:** una lista de favoritos se lee y se olvida; convertirla en una comparación hace que el visitante se detenga en cada película y disco, y le da un resultado propio al final.
 
-![Captura](img/capturas/perfil-nicolas.png)
+![Captura del comparador de gustos de Nicolás con el resultado de compatibilidad](img/capturas/perfil-nicolas.png)
 
 ### Perfil — Laura Belén Blanco
 
@@ -323,7 +326,7 @@ Debe devolver un array vacío. Conviene incluir 412px en la prueba: es el ancho 
 **Qué hace:** presenta tres situaciones: una falla antes de una entrega, una tarea urgente poco clara y un cambio que rompe el proyecto. Cada una ofrece tres respuestas que otorgan 3, 2 o 1 punto. La barra y el indicador muestran el avance; al responder la tercera pregunta, el puntaje total define el resultado: estratega (8–9), colaborativo (5–7) o resolutivo (3–4), que reemplaza a la pregunta en una tarjeta con el nombre del perfil, su descripción y el puntaje obtenido. «Volver a intentar» oculta el resultado, reinicia el puntaje y vuelve a la primera situación.
 **Por qué la elegí:** relacionar decisiones ante problemas urgentes con distintos enfoques de resolución y colaboración.
 
-![Captura](img/capturas/perfil-laura-olivera.png)
+![Captura del test de Laura Olivera con la tarjeta de resultado](img/capturas/perfil-laura-olivera.png)
 
 ### Perfil — Fernando Guevara
 
@@ -332,7 +335,7 @@ Debe devolver un array vacío. Conviene incluir 412px en la prueba: es el ancho 
 **Qué hace:** reúne tres controles. Al activar la foto con clic, Enter o Espacio, gira y alterna entre el retrato y un saludo. En la lista, los discos «Harvest Moon», «Reveal» y «Guess Who» despliegan u ocultan una nota personal; también responden a Enter y Espacio. En el rincón musical, los botones de esos tres discos actualizan el dato curioso mostrado y señalan cuál está seleccionado.
 **Por qué la elegí:** presentar mis gustos musicales junto con notas personales y datos breves sobre cada disco.
 
-![Captura](img/capturas/perfil-fernando.png)
+![Captura del perfil de Fernando con la foto girada y el Rincón Musical](img/capturas/perfil-fernando.png)
 
 ---
 
@@ -345,9 +348,23 @@ Registra, por sprint, las decisiones tomadas, los problemas encontrados y cómo 
 
 ## 10. Publicación en Vercel
 
-**Estado:** no publicado al 25/09/2026. El plan del equipo programa el deploy en Vercel para el Sprint 5 (26/09/2026).
+**Estado:** publicado en Vercel el 27/09/2026.
 
-**URL:** todavía no disponible. Cuando se publique, agregar aquí la URL de producción y probar los enlaces y breakpoints del sitio publicado.
+**URL:** https://sitio-web-grupal.vercel.app/
+
+### Cómo está configurado
+
+El sitio es HTML, CSS y JavaScript sin dependencias, así que Vercel lo sirve tal cual, sin paso de build:
+
+1. En Vercel: *Add New → Project* e importar el repositorio `Nicoalazar/SitioWebGrupal`.
+2. *Framework Preset:* **Other**. *Build Command:* vacío. *Output Directory:* la raíz del repositorio.
+3. *Settings → Git → Production Branch:* **`main`**.
+
+**Decisión del equipo: la rama publicada es `main`, con la versión final.** `development` es la rama de integración de los sprints; cuando el trabajo está cerrado y revisado, pasa a `main` con un Pull Request y recién ahí se publica. Así lo que está online es siempre una versión terminada, como indica el flujo de ramas de la [sección 5](#5-convenciones-de-trabajo).
+
+### Cómo verificar una publicación
+
+Después de cada merge, abrir el sitio publicado (no el local) y repetir la prueba de la [guía de estilos](#accesibilidad-y-responsive): las siete páginas en 400, 900 y 1200px, sin desborde horizontal ni errores de consola, con la navegación interna y las seis interacciones funcionando.
 
 ---
 
@@ -359,8 +376,8 @@ Registra, por sprint, las decisiones tomadas, los problemas encontrados y cómo 
 |---|---|---|---|
 | Claude Code | Claude Opus 5 y Claude Opus 5.5 | Pago | Uso frecuente antes de este TP |
 | Gemini | Gemini 2.5 Flash / Web | Gratuito | Uso frecuente antes de este TP |
-| GitHub Copilot Chat | Modelo asignado a esta sesión; identificador no registrado | Free | Usado en la revisión del Sprint 4; experiencia previa específica no registrada |
-| Claude (chat en claude.ai) | Claude Opus 5.5 | [Pago] | Uso frecuente en el trabajo como QA y en la facultad |
+| GitHub Copilot Chat | Modelo por defecto del plan Free (no se anotó cuál) | Free | Laura Olivera lo usó en la auditoría del navegador del Sprint 4 |
+| Claude (chat en claude.ai) | Claude Opus 5.5 | Pago | Uso frecuente en el trabajo como QA y en la facultad |
 
 ### En qué asistió
 
@@ -399,7 +416,6 @@ Los avatares se generaron enviando imágenes adjuntas a Gemini; por eso no se af
 
 ## 12. Evolución del proyecto
 
-<!-- BORRADOR: propuesta a validar por el equipo antes de la entrega -->
 
 Estas son las líneas que el equipo propone ampliar en los próximos TPs. Cada una parte de un límite concreto que encontramos en este sitio:
 
