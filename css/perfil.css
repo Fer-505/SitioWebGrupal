@@ -1,0 +1,701 @@
+/* ==========================================================================
+   perfil.css — vista de perfil y las 5 interacciones JS individuales
+   --------------------------------------------------------------------------
+   Orden del archivo:
+     1. Navegación interna       4. Widgets: base compartida
+     2. Encabezado del perfil    5. Widgets: cada interacción
+     3. Grilla de datos          6. Media queries (900 / 400)
+
+   Las clases que consume el JS (.cinema-btn, .trivia-opt-btn, .music-btn,
+   .bug-item, .discos-list, .disco-extra, .profile-photo y los estados is-*)
+   no se renombran: la deduplicación se hace agrupando selectores.
+   ========================================================================== */
+
+/* 1. NAVEGACIÓN INTERNA ==================================================== */
+
+.profile-nav-bar,
+.profile-pagination {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.profile-pagination {
+    margin-top: var(--space-xl);
+    justify-content: space-between;
+}
+
+/* 2. ENCABEZADO DEL PERFIL ================================================= */
+
+.profile-intro {
+    background: var(--color-surface);
+    border-left: 5px solid var(--color-accent);
+    border-radius: var(--radius);
+    padding: var(--space-lg);
+}
+
+.profile-header-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.profile-avatar-container {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-header-card .profile-main-info {
+    flex: 1;
+    /* Sin esto el texto largo estira el flex item y desborda la tarjeta */
+    min-width: 0;
+}
+
+.profile-header-card .profile-photo {
+    margin: 0;
+    font-size: var(--fs-xl);
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-feature-soft));
+    color: var(--color-primary);
+}
+
+/* Reverso de la foto de Fernando: lo inyecta js/perfil-fer.js.
+   Mismo tamaño y forma que la foto: sin medida fija, el texto en una línea
+   ensanchaba la columna del avatar y la tarjeta duplicaba su alto entre 412
+   y 600px. En mobile la foto baja a 5.5rem, pero ahí el encabezado se apila
+   y el reverso puede quedarse en 8rem para que el texto entre. */
+.profile-photo-flip-message {
+    width: max(var(--profile-photo-size), 8rem);
+    height: max(var(--profile-photo-size), 8rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-md);
+    font-size: var(--fs-xs);
+    line-height: 1.3;
+    border-radius: 50%;
+    background-color: var(--color-surface);
+    color: var(--color-accent);
+    border: 2px solid var(--color-accent);
+}
+
+.profile-meta {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-sm) 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    color: var(--color-muted-on-dark);
+}
+
+.profile-meta li strong {
+    color: var(--color-accent);
+}
+
+/* 3. GRILLA DE DATOS ======================================================= */
+
+.profile-details-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.tags-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-md) 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.tags-list li {
+    background: var(--color-bg-alt);
+    color: var(--color-accent);
+    border: 1px solid var(--color-card-border);
+    padding: var(--radius-sm) 0.75rem;
+    border-radius: var(--radius-pill);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+}
+
+.styled-item-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-md) 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.styled-item-list li {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid var(--color-card-border);
+}
+
+.styled-item-list li:last-child {
+    border-bottom: none;
+}
+
+.styled-item-list strong {
+    color: var(--color-on-dark);
+}
+
+.styled-item-list span {
+    font-size: var(--fs-xs);
+    color: var(--color-muted-on-dark);
+}
+
+/* 4. WIDGETS: BASE COMPARTIDA ==============================================
+   Las 5 interacciones JS son el mismo contenedor con distinto contenido.
+   Agrupar la base evita repetir el bloque cinco veces.                      */
+
+.cinema-section,
+.pressure-test,
+.taste-section,
+.music-section,
+.bug-hunt {
+    margin-top: var(--space-xl);
+    border-radius: var(--radius);
+    padding: var(--space-xl);
+}
+
+.cinema-heading h2,
+.pressure-test-heading h2,
+.taste-heading h2,
+.music-heading h2,
+.bug-hunt-heading h2 {
+    color: var(--color-on-dark);
+    margin-bottom: var(--space-xs);
+}
+
+/* Paneles translúcidos sobre el fondo del widget */
+.cinema-display-area,
+.test-question,
+.test-result,
+.taste-card,
+.taste-result-area,
+.music-display-area,
+.bug-item {
+    background: var(--color-glass);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius);
+}
+
+.cinema-display-area,
+.test-question,
+.test-result,
+.taste-result-area,
+.music-display-area {
+    padding: var(--space-lg);
+}
+
+/* Botones píldora de selección (cine y música comparten el mismo diseño) */
+.cinema-btn,
+.music-btn {
+    background: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-pill);
+    padding: var(--pad-control);
+    font-family: var(--font-body);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.cinema-btn:hover,
+.music-btn:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+}
+
+.cinema-btn.is-active,
+.music-btn.is-active {
+    background: var(--color-accent);
+    color: var(--color-primary);
+    border-color: var(--color-accent);
+}
+
+.cinema-selector,
+.music-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin: var(--space-md) 0 var(--space-lg);
+}
+
+/* Barras de progreso: tres widgets usaban tres variantes del mismo patrón */
+.progress-track {
+    width: 100%;
+    height: 0.5rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+}
+
+.progress-fill {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--color-accent);
+    transition: width 0.3s ease;
+}
+
+/* 5. WIDGETS: CADA INTERACCIÓN ============================================= */
+
+/* --- Cinefilia (Christian Albornoz) -------------------------------------- */
+
+.cinema-display-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+}
+
+.quote-container {
+    border-right: 1px solid var(--color-card-border);
+    padding-right: var(--space-md);
+}
+
+.animated-quote {
+    font-style: italic;
+    font-size: var(--fs-md);
+    color: var(--color-on-dark);
+    margin: var(--space-sm) 0 0;
+    min-height: 4.5rem;
+    line-height: 1.5;
+}
+
+.trivia-prompt {
+    font-weight: 500;
+    color: var(--color-on-dark);
+    margin: var(--space-xs) 0 var(--space-md);
+}
+
+.trivia-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.trivia-opt-btn {
+    background: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius);
+    padding: var(--pad-control);
+    text-align: left;
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+/* El hover se excluye en las opciones ya respondidas. Antes esto se resolvía
+   con !important en .is-correct / .is-wrong. */
+.trivia-opt-btn:not(.is-correct):not(.is-wrong):hover:not(:disabled) {
+    border-color: var(--color-accent);
+    background: var(--color-bg-alt);
+}
+
+.trivia-opt-btn:disabled {
+    cursor: default;
+    opacity: 0.75;
+}
+
+.trivia-opt-btn.is-correct {
+    background: var(--color-success-bg);
+    border-color: var(--color-success-border);
+    color: var(--color-success-text);
+    font-weight: 700;
+}
+
+.trivia-opt-btn.is-wrong {
+    background: var(--color-error-bg);
+    border-color: var(--color-error-border);
+    color: var(--color-error-text);
+}
+
+.trivia-result {
+    margin-top: var(--space-md);
+    font-weight: 700;
+    font-size: var(--fs-sm);
+    min-height: 1.5rem;
+}
+
+.trivia-result.success {
+    color: var(--color-success);
+}
+
+.trivia-result.error {
+    color: var(--color-error);
+}
+
+/* --- Test de resolución bajo presión (Laura Olivera) --------------------- */
+
+.test-progress {
+    margin: var(--space-lg) 0;
+    color: var(--color-muted-on-dark);
+    font-weight: 700;
+}
+
+.test-progress-track {
+    margin-top: var(--space-sm);
+}
+
+.test-question h3 {
+    color: var(--color-on-dark);
+    margin-top: 0;
+}
+
+.test-options {
+    display: grid;
+    gap: var(--space-sm);
+}
+
+.test-option {
+    background: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-pill);
+    padding: var(--pad-control);
+    font-family: var(--font-body);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.test-option:hover {
+    background: var(--color-accent);
+    color: var(--color-primary);
+    border-color: var(--color-accent);
+}
+
+/* Ocupa el lugar de .test-question al terminar: misma caja, contenido de resultado */
+.test-result h3 {
+    color: var(--color-accent);
+    margin: var(--space-xs) 0 var(--space-sm);
+}
+
+.test-result p {
+    color: var(--color-on-dark);
+    font-size: var(--fs-md);
+    margin: 0;
+}
+
+/* .test-result p le gana a .eyebrow en especificidad: se repiten sus valores */
+.test-result .eyebrow {
+    color: var(--color-muted-on-dark);
+    font-size: var(--fs-xs);
+}
+
+.test-result .test-score {
+    color: var(--color-muted-on-dark);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    margin-top: var(--space-md);
+}
+
+/* --- Comparador de gustos (Nicolás Zalazar) ------------------------------ */
+
+.taste-card-area {
+    margin: var(--space-md) 0 var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.taste-deck-progress {
+    max-width: 22rem;
+}
+
+.taste-progress {
+    color: var(--color-muted-on-dark);
+    font-size: var(--fs-sm);
+    margin: 0;
+}
+
+.taste-card {
+    padding: var(--space-lg) var(--space-xl);
+    text-align: center;
+    min-width: min(100%, 22rem);
+}
+
+.taste-card-type {
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    margin: 0 0 var(--space-xs);
+}
+
+.taste-card h3 {
+    color: var(--color-on-dark);
+    margin: 0 0 var(--space-xs);
+}
+
+.taste-card-meta {
+    color: var(--color-muted-on-dark);
+    margin: 0;
+}
+
+.taste-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm);
+}
+
+.taste-result-area {
+    max-width: 22rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    text-align: center;
+}
+
+.taste-result-percentage {
+    font-family: var(--font-heading);
+    font-size: var(--fs-2xl);
+    font-weight: 700;
+    color: var(--color-accent);
+    margin: 0;
+    line-height: 1;
+}
+
+.taste-meter--compact {
+    max-width: 14rem;
+}
+
+.taste-result-message {
+    font-weight: 700;
+    color: var(--color-on-dark);
+    margin: 0;
+}
+
+.taste-result-area #taste-restart {
+    margin-top: var(--space-sm);
+}
+
+/* --- Rincón musical (Fernando Guevara) ----------------------------------- */
+
+.music-fact {
+    margin: 0;
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+.discos-hint {
+    font-size: var(--fs-xs);
+    color: var(--color-muted-on-dark);
+    margin-top: var(--space-md);
+}
+
+.discos-list li {
+    cursor: pointer;
+}
+
+/* El detalle de cada disco arranca oculto. Antes lo ocultaba el JS en su
+   primera pasada, así que sin JS aparecía desplegado. */
+.disco-extra {
+    display: none;
+}
+
+.discos-list li[aria-expanded="true"] .disco-extra {
+    display: inline;
+}
+
+/* --- Encontrá el bug (Laura Blanco) -------------------------------------- */
+
+.bug-hunt-status {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm) var(--space-lg);
+    margin: var(--space-md) 0;
+    color: var(--color-on-dark);
+    font-weight: 700;
+}
+
+.bug-sheet {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-sm);
+}
+
+.bug-item {
+    width: 100%;
+    display: grid;
+    gap: var(--space-xs);
+    text-align: left;
+    color: var(--color-on-dark);
+    font: inherit;
+    padding: var(--space-md);
+    cursor: pointer;
+}
+
+.bug-item:hover:not(:disabled) {
+    border-color: var(--color-accent);
+}
+
+.bug-item:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+}
+
+.bug-item:disabled {
+    cursor: default;
+}
+
+.bug-item-label {
+    color: var(--color-accent);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+}
+
+.bug-item-value {
+    font-weight: 500;
+}
+
+.bug-item-result:empty {
+    display: none;
+}
+
+.bug-item-result {
+    font-size: var(--fs-sm);
+}
+
+.bug-item.is-bug {
+    border-color: var(--color-bug);
+}
+
+.bug-item.is-bug .bug-item-value {
+    text-decoration: line-through;
+    text-decoration-color: var(--color-bug);
+}
+
+.bug-item.is-bug .bug-item-result {
+    color: var(--color-bug);
+}
+
+.bug-item.is-ok {
+    border-color: var(--color-check);
+    opacity: 0.75;
+}
+
+.bug-item.is-ok .bug-item-result {
+    color: var(--color-check);
+}
+
+.bug-hunt .bug-feedback {
+    margin: var(--space-md) 0 0;
+    padding: var(--space-md);
+    border-radius: var(--radius);
+    background: var(--color-glass-soft);
+    color: var(--color-on-dark);
+}
+
+/* 6. MEDIA QUERIES =========================================================
+   Breakpoints obligatorios del plan de sprints: 900px y 400px. El de 1200px
+   no afecta a esta vista, que a ese ancho ya entra sin ajustes.             */
+
+@media (max-width: 900px) {
+    .profile-details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cinema-display-area {
+        grid-template-columns: 1fr;
+    }
+
+    .quote-container {
+        border-right: none;
+        border-bottom: 1px solid var(--color-card-border);
+        padding-right: 0;
+        padding-bottom: var(--space-md);
+    }
+
+    /* 3rem por lado se comían un cuarto del ancho en pantallas chicas */
+    .cinema-section,
+    .pressure-test,
+    .taste-section,
+    .music-section,
+    .bug-hunt {
+        padding: var(--space-lg);
+    }
+
+    .taste-card {
+        padding: var(--space-lg);
+    }
+}
+
+@media (max-width: 400px) {
+    .profile-header-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* El h1 global tiene max-width: 10ch: sin margen automático, su caja
+       quedaba a la izquierda aunque el texto estuviera centrado */
+    .profile-header-card h1 {
+        margin-inline: auto;
+    }
+
+    .profile-meta {
+        flex-direction: column;
+        gap: var(--space-xs);
+    }
+
+    .profile-pagination {
+        flex-direction: column;
+    }
+
+    .profile-pagination a {
+        text-align: center;
+    }
+
+    .cinema-section,
+    .pressure-test,
+    .taste-section,
+    .music-section,
+    .bug-hunt {
+        padding: var(--space-md);
+    }
+
+    .cinema-display-area,
+    .test-question,
+    .taste-result-area,
+    .music-display-area {
+        padding: var(--space-md);
+    }
+
+    .taste-card {
+        padding: var(--space-md);
+    }
+}
+
+/* Pista visible para el giro de la foto de Fernando (revisión cruzada Sprint 4) */
+.profile-avatar-container--hint {
+    flex-direction: column;
+}
+
+.profile-photo-hint {
+    max-width: var(--profile-photo-size);
+    margin: var(--space-sm) 0 0;
+    color: var(--color-muted-on-dark);
+    font-size: var(--fs-xs);
+    text-align: center;
+}

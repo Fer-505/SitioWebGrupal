@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Laura Olivera — Grupo 15</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/nav.css">
+	<link rel="stylesheet" href="css/perfil.css">
+</head>
+
+<body>
+	<header class="site-header">
+		<div class="container">
+			<nav class="site-nav" aria-label="Navegación principal">
+				<ul>
+					<li><a href="index.html">Inicio</a></li>
+					<li><a href="bitacora.html">Bitácora</a></li>
+				</ul>
+			</nav>
+			<img class="site-logo" width="597" height="111" src="img/logo-agencia.png.jpg"
+				alt="Buenos Aires Aprende y Agencia de Habilidades para el Futuro">
+		</div>
+	</header>
+
+	<main class="site-main">
+		<div class="container">
+			<nav class="profile-nav-bar" aria-label="Navegación de retorno">
+				<a href="index.html" class="hero-button hero-button--light"><span class="icon" aria-hidden="true">←</span> Volver al inicio</a>
+				<a href="bitacora.html" class="hero-button hero-button--light">Ver bitácora <span class="icon" aria-hidden="true">→</span></a>
+			</nav>
+
+			<section class="profile-intro profile-header-card">
+				<div class="profile-avatar-container">
+					<img class="profile-photo" width="992" height="1083" src="img/perfiles/perfil-olivera.jpeg" alt="Foto de perfil de Laura Olivera">
+				</div>
+				<div class="profile-main-info">
+					<p class="eyebrow">Perfil del equipo</p>
+					<h1>Laura Olivera</h1>
+					<ul class="profile-meta">
+						<li><strong>Ciudad:</strong> General Rodríguez, Buenos Aires</li>
+						<li><strong>Edad:</strong> 37 años</li>
+					</ul>
+				</div>
+			</section>
+
+			<section class="profile-details-grid" aria-label="Información del perfil">
+				<article class="service-card">
+					<p class="eyebrow">Aptitudes</p>
+					<h3>Habilidades Clave</h3>
+					<ul class="tags-list">
+						<li>Desarrollo de software</li>
+						<li>Resolución de problemas bajo presión</li>
+						<li>Conocimientos del área sanitaria</li>
+						<li>Git y control de versiones</li>
+					</ul>
+				</article>
+
+				<article class="service-card">
+					<p class="eyebrow">Cinefilia</p>
+					<h3>Películas Favoritas</h3>
+					<ul class="styled-item-list">
+						<li><strong>Coco</strong><span>Lee Unkrich (2017)</span></li>
+						<li><strong>Hombre en llamas</strong><span>Tony Scott (2004)</span></li>
+						<li><strong>The Avengers</strong><span>Joss Whedon (2012)</span></li>
+					</ul>
+				</article>
+
+				<article class="service-card">
+					<p class="eyebrow">Música</p>
+					<h3>Discos Favoritos</h3>
+					<ul class="styled-item-list">
+						<li><strong>Dread Mar I</strong><span>Dread Mar I (2010)</span></li>
+						<li><strong>Dejarte de Amar</strong><span>Camila (2010)</span></li>
+						<li><strong>Abbey Road</strong><span>The Beatles (1969)</span></li>
+					</ul>
+				</article>
+			</section>
+
+			<section class="service-card service-card--featured pressure-test" aria-labelledby="pressure-test-title">
+				<div class="pressure-test-heading">
+					<p class="eyebrow">Interacción Dinámica JS</p>
+					<h2 id="pressure-test-title">¿Cómo resolvés bajo presión?</h2>
+					<p>Elegí una respuesta en cada situación y descubrí tu perfil profesional.</p>
+				</div>
+				<div class="test-progress" aria-live="polite">
+					<span id="test-progress-label">Situación 1 de 3</span>
+					<div class="progress-track test-progress-track"><span id="test-progress-bar" class="progress-fill"></span></div>
+				</div>
+				<div class="test-question" aria-live="polite">
+					<h3 id="test-question-title"></h3>
+					<div id="test-options" class="test-options"></div>
+				</div>
+				<div id="test-result" class="test-result" hidden></div>
+				<button type="button" id="test-restart" class="hero-button hero-button--light" hidden>Volver a intentar</button>
+			</section>
+
+			<nav class="profile-pagination" aria-label="Navegación entre compañeros">
+				<a href="christian-albornoz.html" class="hero-button hero-button--light"><span class="icon" aria-hidden="true">←</span> Perfil anterior (Christian Albornoz)</a>
+				<a href="fernando-guevara.html" class="hero-button hero-button--light">Siguiente perfil (Fernando Guevara) <span class="icon" aria-hidden="true">→</span></a>
+			</nav>
+		</div>
+	</main>
+
+	<footer class="site-footer">
+		<div class="container">
+			<p>Grupo 15 · TP1 Desarrollo de Sistemas Web · 2026 2C</p>
+		</div>
+	</footer>
+
+	<script src="js/perfil-laura-olivera.js" defer></script>
+</body>
+
+</html>

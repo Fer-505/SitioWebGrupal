@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laura Belén Blanco — Grupo 15</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/perfil.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <nav class="site-nav" aria-label="Navegación principal">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="bitacora.html">Bitácora</a></li>
+                </ul>
+            </nav>
+            <img class="site-logo" width="597" height="111" src="img/logo-agencia.png.jpg"
+                alt="Buenos Aires Aprende y Agencia de Habilidades para el Futuro">
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+
+            <!-- Barra de navegación interna -->
+            <nav class="profile-nav-bar" aria-label="Navegación de retorno">
+                <a href="index.html" class="hero-button hero-button--light"><span class="icon" aria-hidden="true">←</span> Volver al inicio</a>
+                <a href="bitacora.html" class="hero-button hero-button--light">Ver bitácora <span class="icon" aria-hidden="true">→</span></a>
+            </nav>
+
+            <!-- Introducción y datos personales -->
+            <section class="profile-intro profile-header-card">
+                <div class="profile-avatar-container">
+                    <!-- Avatar provisorio con iniciales: se reemplaza por la foto más adelante -->
+                    <img class="profile-photo" width="400" height="400" src="img/perfiles/perfil-laura-blanco.jpg" alt="Avatar de Laura Belén Blanco">
+                </div>
+                <div class="profile-main-info">
+                    <p class="eyebrow">Perfil del equipo</p>
+                    <h1>Laura Belén Blanco</h1>
+                    <ul class="profile-meta">
+                        <li><strong>Ciudad:</strong> Ciudad de Buenos Aires</li>
+                        <li><strong>Edad:</strong> 34 años</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Grilla de habilidades, películas y discos -->
+            <section class="profile-details-grid" aria-label="Información del perfil">
+
+                <!-- Habilidades -->
+                <article class="service-card">
+                    <p class="eyebrow">Aptitudes</p>
+                    <h3>Habilidades Clave</h3>
+                    <ul class="tags-list">
+                        <li>Testing manual y exploratorio</li>
+                        <li>Diseño de casos de prueba</li>
+                        <li>Reporte de bugs en Jira</li>
+                        <li>Desarrollo de software</li>
+                    </ul>
+                </article>
+
+                <!-- Películas favoritas -->
+                <article class="service-card">
+                    <p class="eyebrow">Cinefilia</p>
+                    <h3>Películas Favoritas</h3>
+                    <ul class="styled-item-list">
+                        <li>
+                            <strong>Eternal Sunshine of the Spotless Mind</strong>
+                            <span>Michel Gondry (2004)</span>
+                        </li>
+                        <li>
+                            <strong>Into the Wild</strong>
+                            <span>Sean Penn (2007)</span>
+                        </li>
+                        <li>
+                            <strong>Gladiator</strong>
+                            <span>Ridley Scott (2000)</span>
+                        </li>
+                    </ul>
+                </article>
+
+                <!-- Discos favoritos -->
+                <article class="service-card">
+                    <p class="eyebrow">Música</p>
+                    <h3>Discos Favoritos</h3>
+                    <ul class="styled-item-list">
+                        <li>
+                            <strong>Mothership</strong>
+                            <span>Led Zeppelin (2007)</span>
+                        </li>
+                        <li>
+                            <strong>Never Say Die!</strong>
+                            <span>Black Sabbath (1978)</span>
+                        </li>
+                        <li>
+                            <strong>Al final de este viaje...</strong>
+                            <span>Silvio Rodríguez (1978)</span>
+                        </li>
+                    </ul>
+                </article>
+
+            </section>
+
+            <!-- Sección dinámica JavaScript: Encontrá el bug -->
+            <section class="service-card service-card--featured bug-hunt" aria-labelledby="bug-hunt-title">
+                <div class="bug-hunt-heading">
+                    <p class="eyebrow">Interacción Dinámica JS</p>
+                    <h2 id="bug-hunt-title">Encontrá el bug</h2>
+                    <p>Como QA, mi trabajo es encontrar errores antes que los usuarios. Esta ficha tiene
+                        4 bugs escondidos: hacé clic en cada dato que te parezca incorrecto.</p>
+                </div>
+
+                <div class="bug-hunt-status">
+                    <span id="bug-count">Bugs encontrados: 0 de 4</span>
+                    <span id="bug-false">Falsos positivos: 0</span>
+                </div>
+
+                <ul id="bug-sheet" class="bug-sheet" aria-label="Ficha a revisar"></ul>
+
+                <p id="bug-feedback" class="bug-feedback" aria-live="polite">Elegí un dato para revisarlo.</p>
+
+                <button type="button" id="bug-restart" class="hero-button hero-button--light" hidden>Volver a intentar</button>
+            </section>
+
+            <!-- Navegación entre integrantes -->
+            <nav class="profile-pagination" aria-label="Navegación entre compañeros">
+                <a href="nicolas-zalazar.html" class="hero-button hero-button--light"><span class="icon" aria-hidden="true">←</span> Perfil anterior (Nicolás Zalazar)</a>
+                <a href="christian-albornoz.html" class="hero-button hero-button--light">Siguiente perfil (Christian Albornoz) <span class="icon" aria-hidden="true">→</span></a>
+            </nav>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Grupo 15 · TP1 Desarrollo de Sistemas Web · 2026 2C</p>
+        </div>
+    </footer>
+
+    <script src="js/perfil-laura-blanco.js" defer></script>
+</body>
+
+</html>

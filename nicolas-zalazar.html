@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicolás Zalazar — Grupo 15</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/perfil.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <nav class="site-nav" aria-label="Navegación principal">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="bitacora.html">Bitácora</a></li>
+                </ul>
+            </nav>
+            <img class="site-logo" width="597" height="111" src="img/logo-agencia.png.jpg"
+                alt="Buenos Aires Aprende y Agencia de Habilidades para el Futuro">
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+
+            <!-- Barra de navegación interna (sin depender del navegador) -->
+            <nav class="profile-nav-bar" aria-label="Navegación de retorno">
+                <a href="index.html" class="hero-button hero-button--light"><span class="icon" aria-hidden="true">←</span> Volver al inicio</a>
+                <a href="bitacora.html" class="hero-button hero-button--light">Ver bitácora <span class="icon" aria-hidden="true">→</span></a>
+            </nav>
+
+            <!-- Introducción y Datos Personales -->
+            <section class="profile-intro profile-header-card">
+                <div class="profile-avatar-container">
+                    <img class="profile-photo" width="1024" height="1024" src="img/perfiles/perfil-nicolas-zalazar.jpg" alt="Avatar de Nicolás Zalazar">
+                </div>
+                <div class="profile-main-info">
+                    <p class="eyebrow">Perfil del equipo</p>
+                    <h1>Nicolás Zalazar</h1>
+                    <ul class="profile-meta">
+                        <li><strong>Ciudad:</strong> Palermo, CABA</li>
+                        <li><strong>Edad:</strong> 34 años</li>
+                        <li><strong>Especialidad:</strong> Desarrollo Angular & Node.js</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Grilla de Habilidades, Películas y Discos -->
+            <section class="profile-details-grid" aria-label="Información del perfil">
+
+                <!-- Habilidades -->
+                <article class="service-card">
+                    <p class="eyebrow">Aptitudes</p>
+                    <h3>Habilidades Clave</h3>
+                    <ul class="tags-list">
+                        <li>Angular Developer</li>
+                        <li>Node.js Developer</li>
+                        <li>Database administrator</li>
+                        <li>Tech Lead</li>
+                    </ul>
+                </article>
+
+                <!-- Películas Favoritas -->
+                <article class="service-card">
+                    <p class="eyebrow">Cinefilia</p>
+                    <h3>Películas Favoritas</h3>
+                    <ul class="styled-item-list">
+                        <li>
+                            <strong>Inglourious Basterds</strong>
+                            <span>Quentin Tarantino (2009)</span>
+                        </li>
+                        <li>
+                            <strong>Interstellar</strong>
+                            <span>Christopher Nolan (2014)</span>
+                        </li>
+                        <li>
+                            <strong>Harry Potter and the Half-Blood Prince</strong>
+                            <span>David Yates (2009)</span>
+                        </li>
+                    </ul>
+                </article>
+
+                <!-- Discos Favoritos -->
+                <article class="service-card">
+                    <p class="eyebrow">Música</p>
+                    <h3>Discos Favoritos</h3>
+                    <ul class="styled-item-list">
+                        <li>
+                            <strong>Gulp!</strong>
+                            <span>Patricio Rey y sus Redonditos de Ricota (1985)</span>
+                        </li>
+                        <li>
+                            <strong>Chances</strong>
+                            <span>Illya Kuryaki and the Valderramas (2012)</span>
+                        </li>
+                        <li>
+                            <strong>Antihumano</strong>
+                            <span>Attaque 77 (2003)</span>
+                        </li>
+                    </ul>
+                </article>
+
+            </section>
+
+            <!-- Sección Dinámica JavaScript: Comparador de gustos -->
+            <section class="service-card service-card--featured taste-section" aria-labelledby="taste-title">
+                <div class="taste-heading">
+                    <p class="eyebrow">Interacción Dinámica JS</p>
+                    <h2 id="taste-title">Comparador de gustos</h2>
+                    <p>Te voy mostrando mis películas y discos favoritos, uno por uno: marcá "Me gusta" o "No es lo mío" en cada tarjeta y al final calculo compatibilidad de gustos.</p>
+                </div>
+
+                <div id="taste-card-area" class="taste-card-area">
+                    <div class="progress-track taste-deck-progress" role="img" aria-label="Progreso del mazo">
+                        <div id="taste-deck-progress-fill" class="progress-fill"></div>
+                    </div>
+                    <p id="taste-progress" class="taste-progress" aria-live="polite">Tarjeta 1 de 6</p>
+                    <article class="taste-card" aria-live="polite">
+                        <p id="taste-card-type" class="taste-card-type">Película</p>
+                        <h3 id="taste-card-title">Inglourious Basterds</h3>
+                        <p id="taste-card-meta" class="taste-card-meta">Quentin Tarantino (2009)</p>
+                    </article>
+                    <div class="taste-card-actions">
+                        <button type="button" id="taste-ok" class="hero-button"><span class="icon" aria-hidden="true">👍</span> Me gusta</button>
+                        <button type="button" id="taste-no" class="hero-button hero-button--light"><span class="icon" aria-hidden="true">👎</span> No es lo mío</button>
+                    </div>
+                </div>
+
+                <div id="taste-result-area" class="taste-result-area" hidden aria-live="polite">
+                    <p id="taste-result-percentage" class="taste-result-percentage">0%</p>
+                    <div class="progress-track taste-meter--compact" role="img" aria-label="Medidor de compatibilidad">
+                        <div id="taste-meter-fill" class="progress-fill"></div>
+                    </div>
+                    <p id="taste-result" class="taste-result-message"></p>
+                    <button type="button" id="taste-restart" class="hero-button hero-button--light">Volver a intentar</button>
+                </div>
+            </section>
+
+            <!-- Navegación entre miembros del equipo -->
+            <nav class="profile-pagination" aria-label="Navegación entre compañeros">
+                <a href="fernando-guevara.html" class="hero-button hero-button--light"><span class="icon" aria-hidden="true">←</span> Perfil anterior (Fernando Guevara)</a>
+                <a href="laura-blanco.html" class="hero-button hero-button--light">Siguiente perfil (Laura Blanco) <span class="icon" aria-hidden="true">→</span></a>
+            </nav>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Grupo 15 · TP1 Desarrollo de Sistemas Web · 2026 2C</p>
+        </div>
+    </footer>
+
+    <script src="js/perfil-nicolas.js" defer></script>
+</body>
+
+</html>

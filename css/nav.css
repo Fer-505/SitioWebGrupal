@@ -1,0 +1,76 @@
+/* ==========================================================================
+   nav.css — cabecera y navegación principal, compartida por las 7 páginas
+   ========================================================================== */
+
+.site-header {
+  background-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+  color: var(--color-surface);
+  padding: var(--space-md) 0;
+}
+
+.site-header .container {
+  align-items: center;
+  display: flex;
+  /* Red de seguridad: sin esto el nav y el logo compiten en una sola fila */
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  justify-content: space-between;
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav a {
+  color: var(--color-on-dark);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible,
+.site-nav a[aria-current="page"] {
+  color: var(--color-accent);
+}
+
+.site-logo {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  display: block;
+  height: auto;
+  max-height: 3.5rem;
+  max-width: min(100%, 15rem);
+  object-fit: contain;
+  padding: var(--space-xs) var(--space-sm);
+}
+
+/* --------------------------------------------------------------------------
+   Media queries — 900px y 400px
+   -------------------------------------------------------------------------- */
+
+/* El logo mide hasta 15rem (240px). Hasta el Sprint 3 el header solo se
+   apilaba en 400px, así que entre 401 y 900px el logo y el nav compartían
+   una fila sin lugar: en un móvil de 412px el header desbordaba. */
+@media (max-width: 900px) {
+  .site-header .container {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site-logo {
+    align-self: flex-end;
+    max-width: 12rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .site-logo {
+    max-width: 11rem;
+  }
+}

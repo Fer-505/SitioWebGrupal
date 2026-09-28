@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grupo 15 — Sitio Web Grupal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/nav.css">
+</head>
+
+<body>
+
+  <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
+
+  <header class="site-header">
+    <div class="container">
+      <nav class="site-nav" aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html" aria-current="page">Inicio</a></li>
+          <li><a href="bitacora.html">Bitácora</a></li>
+          <!-- Sprint 2: agregar enlaces a los perfiles individuales -->
+        </ul>
+      </nav>
+      <img class="site-logo" width="597" height="111" src="img/logo-agencia.png.jpg"
+        alt="Buenos Aires Aprende y Agencia de Habilidades para el Futuro">
+    </div>
+  </header>
+
+  <main class="site-main" id="contenido-principal">
+    <div class="container">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Grupo 15 · Desarrollo de Sistemas Web</p>
+          <h1 id="page-title">Tu equipo, tu próxima idea.</h1>
+          <p>Conocé las personas, habilidades y decisiones que hacen posible nuestro proyecto.</p>
+          <a class="hero-button hero-button--light" href="#members-title">Conocer al equipo</a>
+        </div>
+        <div class="hero-preview" aria-label="Presentación visual del equipo">
+          <span class="preview-dot preview-dot-one"></span>
+          <span class="preview-dot preview-dot-two"></span>
+          <div class="preview-panel">
+            <span>GRUPO 15</span>
+            <strong>Ideas que<br>se conectan.</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="feature-section" aria-labelledby="features-title">
+        <div class="section-heading">
+          <p class="eyebrow">Lo que vas a encontrar</p>
+          <h2 id="features-title">Conocé nuestros servicios</h2>
+          <p>Un espacio para descubrir cómo pensamos, qué hacemos y cómo construimos juntos.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="service-card"><span class="feature-icon" aria-hidden="true">01</span>
+            <h3>Perfiles</h3>
+            <p>Conocé las historias e intereses de cada integrante.</p>
+          </article>
+          <article class="service-card service-card--featured"><span class="feature-icon" aria-hidden="true">02</span>
+            <h3>Proceso</h3>
+            <p>Seguimos las decisiones y aprendizajes en la bitácora.</p>
+          </article>
+          <article class="service-card"><span class="feature-icon" aria-hidden="true">03</span>
+            <h3>Diseño</h3>
+            <p>Construimos una identidad visual compartida.</p>
+          </article>
+          <article class="service-card service-card--featured"><span class="feature-icon" aria-hidden="true">04</span>
+            <h3>Equipo</h3>
+            <p>Una portada común para cinco recorridos distintos.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="split-section" aria-labelledby="about-title">
+        <div class="split-art"><strong>Aprendemos<br>haciendo.</strong></div>
+        <div>
+          <p class="eyebrow">Sobre nosotros</p>
+          <h2 id="about-title">Ideas claras, trabajo compartido.</h2>
+          <p>Somos cinco estudiantes con recorridos distintos y un objetivo común: convertir una consigna en una
+            experiencia web consistente.</p>
+          <ul class="check-list">
+            <li>Identidad visual compartida</li>
+            <li>Historias personales y habilidades</li>
+            <li>Decisiones registradas por sprint</li>
+          </ul>
+          <a class="hero-button" href="bitacora.html">Conocer nuestro proceso</a>
+        </div>
+      </section>
+
+      <section class="members-section" aria-labelledby="members-title">
+        <div class="members-toolbar">
+          <div>
+            <p class="eyebrow">Explorá</p>
+            <h2 id="members-title">Conocé al equipo</h2>
+          </div>
+          <label>
+            <span class="visually-hidden">Buscar integrante</span>
+            <input class="member-search" type="search" placeholder="Buscar integrante" data-member-search>
+          </label>
+        </div>
+        <div class="member-carousel" data-member-list>
+          <div class="member-grid">
+            <article class="member-card" data-member="nicolás zalazar"><img class="profile-photo" width="1024" height="1024" src="img/perfiles/perfil-nicolas-zalazar.jpg" alt="Avatar de Nicolás Zalazar"><h3>Nicolás Zalazar</h3><p>Perfil y recorrido personal.</p><a href="nicolas-zalazar.html">Ver perfil</a></article>
+            <article class="member-card" data-member="laura belén blanco"><img class="profile-photo" width="400" height="400" src="img/perfiles/perfil-laura-blanco.jpg" alt="Avatar de Laura Belén Blanco"><h3>Laura Belén Blanco</h3><p>Perfil y recorrido personal.</p><a href="laura-blanco.html">Ver perfil</a></article>
+            <article class="member-card" data-member="christian albornoz"><img class="profile-photo" width="1024" height="1024" src="img/perfiles/perfil-christian-albornoz.jpg" alt="Avatar de Christian Albornoz"><h3>Christian Albornoz</h3><p>Perfil y recorrido personal.</p><a href="christian-albornoz.html">Ver perfil</a></article>
+            <article class="member-card" data-member="laura olivera"><img class="profile-photo" width="992" height="1083" src="img/perfiles/perfil-olivera.jpeg" alt="Avatar de Laura Olivera"><h3>Laura Olivera</h3><p>Perfil y recorrido personal.</p><a href="laura-olivera.html">Ver perfil</a></article>
+            <article class="member-card" data-member="fernando guevara"><img class="profile-photo" width="1024" height="1024" src="img/perfiles/perfil-fernando.jpeg" alt="Avatar de Fer Guevara"><h3>Fernando Guevara</h3><p>Perfil y recorrido personal.</p><a href="fernando-guevara.html">Ver perfil</a></article>
+          </div>
+        </div>
+        <div class="carousel-controls" aria-label="Controles del carrusel">
+          <button class="carousel-button" type="button" data-carousel-previous>Anterior</button>
+          <span class="carousel-status" aria-live="polite" data-carousel-status>Perfil 1 de 5</span>
+          <button class="carousel-button" type="button" data-carousel-next>Siguiente</button>
+        </div>
+        <p class="empty-state" data-empty-state hidden>No encontramos integrantes con ese nombre.</p>
+      </section>
+
+      <section class="journal-banner" aria-labelledby="journal-title">
+        <div>
+          <p class="eyebrow">Detrás de escena</p>
+          <h2 id="journal-title">Cada sprint deja una historia.</h2>
+        </div>
+        <a class="hero-button" href="bitacora.html">Leer la bitácora</a>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Grupo 15 · TP1 Desarrollo de Sistemas Web · 2026 2C</p>
+    </div>
+  </footer>
+
+  <script src="js/portada.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,890 @@
+/* ==========================================================================
+   base.css — sistema visual compartido del sitio
+   --------------------------------------------------------------------------
+   Orden del archivo:
+     1. Tokens (:root)      5. Componentes de portada
+     2. Reset y tipografía  6. Componentes compartidos (avatar, footer)
+     3. Layout y utilidades 7. Bitácora
+     4. Accesibilidad       8. Media queries (1200 / 900 / 400)
+   ========================================================================== */
+
+/* 1. TOKENS ================================================================ */
+
+:root {
+  /* Paleta base */
+  --color-primary: #111746;
+  --color-secondary: #342275;
+  --color-accent: #53d6d2;
+  --color-bg: #090d2d;
+  --color-bg-alt: #151c50;
+  --color-bg-glow: #25216b;
+  --color-surface: #171d4b;
+  --color-text: #f6f5ff;
+  --color-text-muted: #b8bddb;
+  --color-hero-start: #151e5c;
+  --color-hero-mid: #29256f;
+  --color-hero-end: #4b267f;
+  --color-hero-soft: #d9ffff;
+  --color-hero-overlay: rgb(255 255 255 / 18%);
+  --color-feature: #53d6d2;
+  --color-feature-soft: #9eece7;
+  --color-featured-text: #e5dcff;
+  --color-shadow: rgb(20 20 80 / 25%);
+  --color-card-shadow: rgb(23 63 95 / 10%);
+  --color-service-shadow: rgb(36 20 95 / 8%);
+  --color-journal: #111746;
+  --color-journal-soft: #d9ffff;
+  --color-journal-end: #29256f;
+  --color-members-border: rgb(83 214 210 / 18%);
+  --color-members-shadow: rgb(4 7 35 / 25%);
+  --color-search-shadow: rgb(4 7 35 / 28%);
+  --color-search-focus: rgb(83 214 210 / 25%);
+  --color-on-dark: #ffffff;
+  --color-muted-on-dark: #d9ddf5;
+  --color-card-dark: #20265d;
+  --color-input-bg: #f7f8ff;
+  --color-input-text: #171a4b;
+  --color-input-border: #6e5bd4;
+  --color-section: rgb(23 29 75 / 88%);
+  --color-card-border: rgb(137 145 210 / 25%);
+  --color-featured-end: #54309a;
+  --color-focus: #ffffff;
+  --color-placeholder: #5f6380;
+  --color-check: #9eece7;
+
+  /* Superficies translúcidas sobre el fondo oscuro */
+  --color-glass: rgb(9 13 45 / 55%);
+  --color-glass-soft: rgb(9 13 45 / 35%);
+
+  /* Feedback de las interacciones JS (acierto / error / bug encontrado) */
+  --color-success: #53d6a4;
+  --color-success-bg: #1b4d3e;
+  --color-success-border: #53d6a4;
+  --color-success-text: #d9ffea;
+  --color-error: #ff8ca3;
+  --color-error-bg: #501d2d;
+  --color-error-border: #d65377;
+  --color-error-text: #ffd9e2;
+  --color-bug: #ff9f9f;
+
+  /* Tipografía */
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+
+  /* Escala tipográfica */
+  --fs-xs: 0.8rem;
+  --fs-sm: 0.9rem;
+  --fs-base: 1.05rem;
+  --fs-md: 1.15rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 2rem;
+  --fs-2xl: 2.5rem;
+  --fs-h1: clamp(2.5rem, 8vw, 5.5rem);
+  --fs-h2: clamp(2rem, 4vw, 3rem);
+  --fs-h3: clamp(1.8rem, 4vw, 2.6rem);
+  --fs-hero: clamp(2.8rem, 7vw, 5.5rem);
+
+  /* Espaciado y layout */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --gutter: var(--space-md);
+  --max-width: 1200px;
+  /* Relleno de botones, opciones e input de búsqueda. Antes había seis
+     valores casi iguales (0.6/0.65/0.7/0.75rem por 1/1.2/1.25rem). */
+  --pad-control: 0.7rem 1.2rem;
+
+  /* Radios */
+  --radius-sm: 0.35rem;
+  --radius: 0.75rem;
+  --radius-pill: 2rem;
+  --radius-circle: 50%;
+
+  /* Sombras */
+  --shadow-sm: 0 4px 20px var(--color-card-shadow);
+  --shadow-md: 0 10px 25px var(--color-card-shadow);
+  --shadow-lg: 0 20px 35px var(--color-shadow);
+
+  /* Tamaños de componentes */
+  --profile-photo-size: 8rem;
+  --icon-size: 1em;
+}
+
+/* 2. RESET Y TIPOGRAFÍA ==================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* body en columna + .site-main flexible: mantiene el footer abajo sin depender
+   de un alto fijo de header/footer, que cambia cuando el header se apila. */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  color: var(--color-text);
+  background: radial-gradient(circle at 80% 10%, var(--color-bg-glow) 0, transparent 28rem), linear-gradient(135deg, var(--color-bg), var(--color-bg-alt));
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  margin: 0 0 var(--space-sm);
+  /* Evita que una palabra larga desborde cuando el título llega a 5.5rem */
+  overflow-wrap: break-word;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  max-width: 10ch;
+  color: var(--color-on-dark);
+}
+
+a {
+  color: var(--color-accent);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+code {
+  background: var(--color-glass);
+  border-radius: var(--radius-sm);
+  font-family: ui-monospace, "Cascadia Code", "Consolas", monospace;
+  font-size: var(--fs-sm);
+  padding: 0.1em 0.35em;
+  /* Las rutas largas de la bitácora no deben desbordar en mobile */
+  overflow-wrap: anywhere;
+}
+
+/* 3. LAYOUT Y UTILIDADES =================================================== */
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.site-main {
+  flex: 1;
+  padding: clamp(2rem, 7vw, 5rem) 0;
+}
+
+/* Glifos decorativos (flechas, emojis). Siempre con aria-hidden en el HTML:
+   sin eso un lector de pantalla lee "flecha izquierda Volver al inicio". */
+.icon {
+  display: inline-block;
+  font-size: var(--icon-size);
+  font-style: normal;
+  line-height: 1;
+}
+
+.skip-link {
+  background: var(--color-on-dark);
+  border-radius: 0 0 var(--radius) var(--radius);
+  color: var(--color-input-text);
+  left: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  position: absolute;
+  top: -5rem;
+  z-index: 10;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+/* 5. COMPONENTES DE PORTADA ================================================ */
+
+.hero {
+  align-items: end;
+  background: linear-gradient(125deg, var(--color-hero-start), var(--color-hero-mid) 70%, var(--color-hero-end));
+  border-radius: var(--radius);
+  color: var(--color-surface);
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  min-height: 28rem;
+  overflow: hidden;
+  padding: clamp(2rem, 6vw, 5rem);
+  position: relative;
+}
+
+/* Círculos decorativos de 22rem con offsets negativos: los contiene el
+   overflow: hidden de .hero. No quitar esa línea. */
+.hero::before,
+.hero::after {
+  background: var(--color-hero-overlay);
+  border-radius: var(--radius-circle);
+  content: "";
+  height: 22rem;
+  position: absolute;
+  width: 22rem;
+}
+
+.hero::before {
+  left: -9rem;
+  top: -11rem;
+}
+
+.hero::after {
+  bottom: -14rem;
+  right: -5rem;
+}
+
+.hero-copy,
+.hero-preview {
+  position: relative;
+  z-index: 1;
+}
+
+.hero .eyebrow {
+  color: var(--color-hero-soft);
+}
+
+.hero h1 {
+  font-size: var(--fs-hero);
+  margin-bottom: var(--space-md);
+  color: var(--color-on-dark);
+}
+
+.hero-copy > p:not(.eyebrow) {
+  max-width: 34rem;
+  color: var(--color-muted-on-dark);
+}
+
+/* Se usa en enlaces <a> y en <button>: border, cursor y font anulan los
+   estilos que el navegador le pone a <button> (Arial 13px, borde en relieve). */
+.hero-button {
+  background: var(--color-accent);
+  border: 0;
+  border-radius: var(--radius-pill);
+  color: var(--color-primary);
+  cursor: pointer;
+  display: inline-block;
+  /* font va antes de font-weight: el atajo resetea el peso */
+  font: inherit;
+  font-weight: 700;
+  margin-top: var(--space-md);
+  padding: var(--pad-control);
+  text-decoration: none;
+}
+
+/* display: inline-block le gana al atributo hidden: sin esto los reinicios
+   que arrancan ocultos se ven desde el principio */
+.hero-button[hidden] {
+  display: none;
+}
+
+.hero-button--light {
+  background: var(--color-on-dark);
+  color: var(--color-primary);
+}
+
+/* El hover tiene que seguir siendo claro: el texto del botón es --color-primary (oscuro) */
+.hero-button:hover,
+.hero-button:focus-visible {
+  background: var(--color-feature-soft);
+  color: var(--color-primary);
+}
+
+.hero-preview {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 17rem;
+}
+
+.preview-panel {
+  background: var(--color-card-dark);
+  box-shadow: var(--shadow-lg);
+  color: var(--color-on-dark);
+  padding: 2.5rem 2rem;
+  transform: rotate(3deg);
+  width: min(100%, 19rem);
+}
+
+.preview-panel span {
+  color: var(--color-accent);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.preview-panel strong {
+  color: var(--color-on-dark);
+  display: block;
+  font-family: var(--font-heading);
+  font-size: var(--fs-xl);
+  line-height: 1;
+  margin-top: var(--space-lg);
+}
+
+.preview-dot {
+  background: var(--color-feature);
+  border-radius: var(--radius-circle);
+  height: 4rem;
+  position: absolute;
+  width: 4rem;
+}
+
+.preview-dot-one { right: 9%; top: 5%; }
+.preview-dot-two { bottom: 6%; left: 7%; height: 2rem; width: 2rem; }
+
+/* Full-bleed dentro de .container: el margen negativo cancela exactamente el
+   padding del contenedor. Ambos usan --gutter, así que siguen el breakpoint
+   de 400px juntos. Si se cambia uno hay que cambiar el otro. */
+.feature-section {
+  background: var(--color-section);
+  margin: 0 calc(var(--gutter) * -1);
+  padding: clamp(3rem, 7vw, 5rem) var(--gutter);
+  text-align: center;
+}
+
+.section-heading {
+  margin-bottom: var(--space-xl);
+  text-align: center;
+}
+
+.section-heading p {
+  color: var(--color-muted-on-dark);
+  margin: 0 auto;
+  max-width: 42rem;
+}
+
+.feature-section h2 {
+  color: var(--color-on-dark);
+  font-size: var(--fs-h2);
+}
+
+.feature-grid {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: repeat(4, 1fr);
+  margin: var(--space-xl) auto 0;
+  max-width: 1000px;
+}
+
+.service-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 10px 25px var(--color-service-shadow);
+  padding: var(--space-lg);
+  text-align: left;
+}
+
+.service-card h3,
+.service-card p {
+  color: var(--color-on-dark);
+}
+
+.service-card p {
+  color: var(--color-muted-on-dark);
+}
+
+.service-card--featured {
+  background: linear-gradient(145deg, var(--color-secondary), var(--color-featured-end));
+  color: var(--color-surface);
+  transform: translateY(-0.75rem);
+}
+
+.service-card--featured p {
+  color: var(--color-featured-text);
+}
+
+.feature-grid article p {
+  color: var(--color-muted-on-dark);
+  margin: 0 auto;
+  max-width: 13rem;
+}
+
+.feature-icon {
+  align-items: center;
+  background: var(--color-feature);
+  border-radius: var(--radius-circle);
+  color: var(--color-primary);
+  display: inline-flex;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  height: 4.5rem;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+  width: 4.5rem;
+}
+
+.journal-banner {
+  align-items: center;
+  background: linear-gradient(120deg, var(--color-journal), var(--color-journal-end));
+  color: var(--color-surface);
+  display: flex;
+  justify-content: space-between;
+  margin: var(--space-xl) 0;
+  padding: clamp(2rem, 5vw, 4rem);
+}
+
+.split-section {
+  align-items: center;
+  display: grid;
+  gap: clamp(2rem, 6vw, 5rem);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  padding: clamp(3rem, 8vw, 6rem) 0;
+}
+
+.split-art {
+  background: linear-gradient(145deg, var(--color-secondary), var(--color-primary));
+  border-radius: 45% 45% var(--space-sm) var(--space-sm);
+  color: var(--color-surface);
+  min-height: 22rem;
+  /* Contiene el círculo de 9rem del ::after, que se posiciona al 15% del borde */
+  overflow: hidden;
+  padding: var(--space-xl);
+  position: relative;
+}
+
+.split-art::after {
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-circle);
+  content: "+";
+  font-size: 5rem;
+  height: 9rem;
+  line-height: 8rem;
+  position: absolute;
+  right: 15%;
+  text-align: center;
+  top: 18%;
+  width: 9rem;
+}
+
+.split-art strong {
+  bottom: var(--space-lg);
+  color: var(--color-on-dark);
+  font-family: var(--font-heading);
+  font-size: var(--fs-xl);
+  left: var(--space-lg);
+  position: absolute;
+}
+
+.journal-banner h2 {
+  color: var(--color-on-dark);
+}
+
+.split-section h2 {
+  color: var(--color-on-dark);
+}
+
+.split-section > div:last-child > p:not(.eyebrow),
+.split-section li {
+  color: var(--color-muted-on-dark);
+}
+
+.check-list {
+  list-style: none;
+  margin: var(--space-lg) 0;
+  padding: 0;
+}
+
+.check-list li {
+  margin-bottom: var(--space-sm);
+}
+
+.check-list li::before {
+  color: var(--color-check);
+  content: "✓";
+  font-weight: 700;
+  margin-right: var(--space-sm);
+}
+
+.journal-banner .eyebrow {
+  color: var(--color-journal-soft);
+}
+
+.eyebrow {
+  color: var(--color-accent);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero p {
+  font-size: var(--fs-md);
+  max-width: 48rem;
+}
+
+.members-section {
+  background: linear-gradient(135deg, var(--color-card-dark), var(--color-surface));
+  border: 1px solid var(--color-members-border);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 35px var(--color-members-shadow);
+  margin-top: clamp(3rem, 8vw, 6rem);
+  padding: clamp(2rem, 5vw, 4rem);
+  /* La grilla interna no debe empujar el ancho del contenedor */
+  min-width: 0;
+}
+
+.members-toolbar {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+}
+
+.members-toolbar h2 {
+  color: var(--color-on-dark);
+  font-size: var(--fs-h3);
+  margin-bottom: 0;
+}
+
+.members-toolbar .eyebrow {
+  color: var(--color-accent);
+  margin-bottom: var(--space-xs);
+}
+
+.members-toolbar h2,
+.members-section h3 {
+  color: var(--color-on-dark);
+}
+
+.members-section .eyebrow,
+.members-section .empty-state,
+.carousel-status {
+  color: var(--color-muted-on-dark);
+}
+
+.member-search {
+  background: var(--color-input-bg);
+  border: 2px solid var(--color-input-border);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 8px 22px var(--color-search-shadow);
+  color: var(--color-input-text);
+  font: inherit;
+  min-width: min(100%, 18rem);
+  padding: var(--pad-control);
+}
+.member-search::placeholder {
+  color: var(--color-placeholder);
+}
+.member-search:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-search-focus);
+  outline: none;
+}
+
+/* Carrusel 3D. --carousel-depth es el translateZ de las tarjetas: separa las
+   laterales de la activa. js/portada.js lo lee para armar el transform, así
+   que el valor se ajusta por breakpoint acá y no en el JS. Con 220px fijos
+   las tarjetas laterales se salían del viewport por debajo de ~500px. */
+.member-carousel {
+  --carousel-depth: 220px;
+  overflow: hidden;
+  height: 27rem;
+  perspective: 1200px;
+  width: 100%;
+}
+
+.member-grid {
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.member-card {
+  background: var(--color-surface);
+  border-top: 5px solid var(--color-accent);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  backface-visibility: hidden;
+  left: 50%;
+  min-height: 190px;
+  opacity: 0.5;
+  padding: var(--space-lg);
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%) rotateY(90deg) translateZ(var(--carousel-depth)) scale(0.78);
+  transition: opacity 500ms ease, transform 700ms ease;
+  width: min(78vw, 280px);
+}
+
+.member-card.is-active {
+  transform: translate(-50%, -50%) rotateY(0deg) translateZ(var(--carousel-depth)) scale(1);
+  opacity: 1;
+  z-index: 2;
+}
+
+.member-card.is-previous {
+  opacity: 0.75;
+  transform: translate(-50%, -50%) rotateY(72deg) translateZ(var(--carousel-depth)) scale(0.82);
+}
+
+.member-card.is-next {
+  opacity: 0.75;
+  transform: translate(-50%, -50%) rotateY(-72deg) translateZ(var(--carousel-depth)) scale(0.82);
+}
+
+/* 6. COMPONENTES COMPARTIDOS =============================================== */
+
+/* Avatar. Vive en base.css y no en perfil.css porque las tarjetas del
+   carrusel de la portada también lo usan, e index.html no carga perfil.css.
+   Sirve tanto para un <img> como para un <div> con las iniciales. */
+.profile-photo {
+  align-items: center;
+  background: linear-gradient(145deg, var(--color-feature), var(--color-feature-soft));
+  border: 0.5rem solid var(--color-surface);
+  border-radius: var(--radius-circle);
+  box-shadow: 0 0 0 2px var(--color-accent), 0 10px 20px var(--color-card-shadow);
+  color: var(--color-primary);
+  display: flex;
+  font-family: var(--font-heading);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  height: var(--profile-photo-size);
+  justify-content: center;
+  margin: 0 auto var(--space-md);
+  object-fit: cover;
+  width: var(--profile-photo-size);
+}
+
+img.profile-photo {
+  display: block;
+}
+
+.member-card[hidden] {
+  display: none;
+}
+
+.carousel-controls {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  justify-content: center;
+  margin-top: var(--space-lg);
+}
+
+.carousel-button {
+  background: var(--color-secondary);
+  border: 0;
+  border-radius: var(--radius-pill);
+  color: var(--color-text);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  padding: var(--pad-control);
+}
+
+.carousel-button:hover,
+.carousel-button:focus-visible {
+  background: var(--color-primary);
+}
+
+.carousel-button:disabled {
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-card-border);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+.carousel-status {
+  color: var(--color-text-muted);
+  min-width: 7rem;
+  text-align: center;
+}
+
+.member-card h3 {
+  color: var(--color-on-dark);
+  font-size: var(--fs-lg);
+}
+
+.member-card p {
+  color: var(--color-muted-on-dark);
+}
+
+.member-card a {
+  font-weight: 700;
+  margin-top: auto;
+}
+
+.member-card[hidden],
+.empty-state[hidden] {
+  display: none;
+}
+
+.empty-state {
+  color: var(--color-text-muted);
+  margin-top: var(--space-lg);
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.site-footer {
+  border-top: 1px solid var(--color-secondary);
+  padding: var(--space-md) 0;
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}
+
+/* 7. BITÁCORA ============================================================== */
+
+.bitacora-entry {
+  background-color: var(--color-surface);
+  border-left: 4px solid var(--color-accent);
+  border-radius: var(--radius);
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.bitacora-nav {
+  margin-bottom: var(--space-lg);
+}
+
+.bitacora-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-sm);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bitacora-entry time {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}
+
+.bitacora-entry h3 {
+  margin-top: var(--space-md);
+  font-size: var(--fs-base);
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* 8. MEDIA QUERIES ========================================================= */
+/* Breakpoints obligatorios del plan de sprints: 1200px, 900px y 400px.
+   Enfoque desktop-first: cada bloque ajusta lo que el anterior dejó. */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --- 1200px: el contenedor deja de crecer y la grilla baja a 3 columnas --- */
+@media (max-width: 1200px) {
+  .feature-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hero {
+    min-height: 24rem;
+  }
+
+  .member-carousel {
+    height: 26rem;
+  }
+}
+
+/* --- 900px: una sola columna y el header se apila ------------------------ */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .split-section {
+    grid-template-columns: 1fr;
+  }
+
+  .split-art {
+    min-height: 18rem;
+  }
+
+  .member-carousel {
+    --carousel-depth: 150px;
+  }
+}
+
+/* --- 400px: mobile ------------------------------------------------------- */
+@media (max-width: 400px) {
+  .container {
+    --gutter: 0.75rem;
+  }
+
+  .hero {
+    min-height: 0;
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .member-grid {
+    gap: 0;
+  }
+
+  .member-carousel {
+    --carousel-depth: 130px;
+    height: 23rem;
+  }
+
+  .member-card {
+    /* El avatar de 8rem se comía media tarjeta en este ancho */
+    --profile-photo-size: 5.5rem;
+  }
+
+  .service-card--featured {
+    transform: none;
+  }
+
+  .journal-banner {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .split-art {
+    min-height: 14rem;
+    padding: var(--space-lg);
+  }
+}

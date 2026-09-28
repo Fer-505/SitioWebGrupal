@@ -1,0 +1,5 @@
+# Este archivo define quién debe revisar los Pull Requests.
+# Al activar "Require review from Code Owners" en la protección de la rama main,
+# GitHub exige la aprobación de al menos uno de los dueños listados abajo.
+
+* @Nicoalazar
